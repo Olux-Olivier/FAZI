@@ -12,15 +12,15 @@ class BienController extends Controller
      */
     public function index()
     {
-        //
+        return view('bien.index');
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+
     }
 
     /**
@@ -28,7 +28,7 @@ class BienController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
     }
 
     /**

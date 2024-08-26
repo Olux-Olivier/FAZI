@@ -19,9 +19,9 @@ return new class extends Migration
             $table->string('avenue');
             $table->integer('numero');
             $table->string('description');
-            $table->integer('loyer');
-            $table->integer('garantie');
-            $table->integer('prix_vente');
+            $table->integer('loyer')->nullable();
+            $table->integer('garantie')->nullable();
+            $table->integer('prix_vente')->nullable();
             $table->double('surface');
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->timestamps();

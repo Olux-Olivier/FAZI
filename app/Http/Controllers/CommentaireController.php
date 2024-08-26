@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Commentaire;
 use Illuminate\Http\Request;
+use App\Http\Requests\CommentaireRequest;
 
 class CommentaireController extends Controller
 {
@@ -12,7 +13,8 @@ class CommentaireController extends Controller
      */
     public function index()
     {
-        //
+        $commentaires = Commentaire::All();
+        return view('pages.commentaire.index', ['commentaires' => $commentaires]);
     }
 
     /**
@@ -20,15 +22,16 @@ class CommentaireController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.commentaire.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CommentaireRequest $request)
     {
-        //
+       Commentaire::create($request->validated());
+        return to_route('commentaire.index')->with('succes', "Commentaire posté avec succès !");
     }
 
     /**
