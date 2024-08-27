@@ -9,6 +9,20 @@ class Bien extends Model
 {
     use HasFactory;
 
+    public $fillable = [
+        'chambre',
+        'type_bien',
+        'commune',
+        'quartier',
+        'avenue',
+        'numero',
+        'description',
+        'loyer',
+        'garantie',
+        'prix_vente',
+        'surface',
+        'user_id'
+    ];
 
 
     public function users()

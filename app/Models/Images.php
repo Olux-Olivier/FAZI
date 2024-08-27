@@ -9,6 +9,11 @@ class Images extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'images',
+        'bien_id'
+    ];
+
 
 
     public function biens()

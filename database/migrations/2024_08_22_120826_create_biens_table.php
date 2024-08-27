@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('biens', function (Blueprint $table) {
             $table->id();
+            $table->string('type_bien');
             $table->integer('chambre');
             $table->string('commune');
             $table->string('quartier');
             $table->string('avenue');
-            $table->integer('numero');
             $table->string('description');
             $table->integer('loyer')->nullable();
             $table->integer('garantie')->nullable();
