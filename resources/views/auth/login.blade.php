@@ -9,7 +9,7 @@
             <input type="password" name="password" placeholder="password">
 
             <button>Connecter</button>
-            <a href="{{route('signup')}}" > Sign-up</a>
+            <a href="{{route('signup')}}" > Creez un compte</a>
         </form>
     </h1>
 </div>

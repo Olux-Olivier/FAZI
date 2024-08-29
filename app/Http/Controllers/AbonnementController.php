@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Abonnement;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AbonnementController extends Controller
 {
@@ -12,13 +13,17 @@ class AbonnementController extends Controller
      */
     public function index()
     {
-        //
+        return view('abonnement.index');
+    }
+
+    public function contract(){
+        return view('abonnement.contract');
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
         //
     }
@@ -28,7 +33,11 @@ class AbonnementController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Abonnement::create([
+            'numero' => $request->numero,
+            'montant' => $request->montant,
+            'user_id' => Auth::user()->id,
+        ]);
     }
 
     /**

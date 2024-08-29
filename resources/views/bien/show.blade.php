@@ -18,4 +18,18 @@
         @foreach($ToutesImages as $image)
             <img src="{{asset('storage/'.$image)}}" height="70" width="70" alt="">
         @endforeach
+
+
+    <div>
+        <h3>Autres Maisons</h3>
+        @forelse($OthersWithImages as $other)
+            <div>
+                <a href="{{route('bien.show', $other['id'])}}">
+                    <img src="{{asset('storage/'.$other['imagePrincipale'])}}" height="200px" width="200px" alt="" >
+                </a>
+                 </div>
+        @empty
+            Aucune suggestion pour cette categorie
+        @endforelse
+    </div>
 </div>

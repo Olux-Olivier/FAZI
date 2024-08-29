@@ -3,24 +3,31 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\BienRequest;
+use App\Models\Abonnement;
 use App\Models\Bien;
 use App\Models\Images;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Auth;
 
 class BienController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        return view('bien.index');
+        if(Auth::user()->categorie == 2){
+
+            $user = Abonnement::where('user_id', Auth::user()->id)->get();
+            if($user->isEmpty()){
+                return to_route('contract');
+            }
+            return view('bien.index');
+        }
+        return to_route('anauthorize');
+    }
+    public function anauthorized(){
+        return view('bien.anauthorize');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create(Request $request)
     {
 
@@ -31,6 +38,7 @@ class BienController extends Controller
      */
     public function store(BienRequest $request)
     {
+
         /** @var UploadedFile $image_principale */
 
         $image_principale = $request->file('image_principale');
@@ -49,6 +57,7 @@ class BienController extends Controller
         if ($ImagePathPrincipale) {
             array_unshift($imagesPaths, $ImagePathPrincipale);
         }
+
 
         $bien = Bien::create([
             'chambre' => $request->chambre,
@@ -77,11 +86,23 @@ class BienController extends Controller
         $imagePrincipale = $ToutesImages[0];
         array_shift($ToutesImages);
 
-        $Others = Bien::where('type_bien',$bien->type_bien)->take(5)->get();
-        dd($Others);
-        //Afficher des suggestions
+        $Others = Bien::where('type_bien',$bien->type_bien)
+            ->where('id','!=',$bien->id)
+            ->take(5)
+            ->get();
 
-        return view('bien.show', compact('bien', 'imagePrincipale', 'ToutesImages'));
+        $OthersWithImages = $Others->map(function ($otherBien) {
+            $otherImageBiens = Images::where('bien_id', $otherBien->id)->first();
+            $otherImages = $otherImageBiens ? json_decode($otherImageBiens->images) : [];
+            $otherImagePrincipale = $otherImages[0] ?? null;
+
+            return [
+                'id' => $otherBien->id, // Si vous souhaitez afficher le titre également
+                'imagePrincipale' => $otherImagePrincipale,
+            ];
+        });
+
+            return view('bien.show', compact('bien', 'imagePrincipale', 'ToutesImages', 'OthersWithImages'));
     }
 
     /**
