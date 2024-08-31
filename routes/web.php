@@ -7,9 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CommentaireController;
 
-Route::get('/', function () {
-    return view('accueil');
-})->name('index');
+Route::get('/', [BienController::class,'acceuil'])->name('index');
 
 Route::get('/login',[AuthController::class,'login'])->name('login');
 Route::get('logout',[AuthController::class,'logout'])->name('logout');
@@ -23,6 +21,8 @@ Route::get('/dashboard',[\App\Http\Controllers\AdminController::class,'index'])-
 
 
 Route::resource('bien', BienController::class);
+Route::get('/bienLocation', [BienController::class,'bienLocation'])->name('bien.location');
+Route::get('/bienVente', [BienController::class,'bienVente'])->name('bien.vente');
 Route::get('/anauthorize',[BienController::class,'anauthorized'])->name('anauthorize');
 Route::resource('commentaire', CommentaireController::class)->names([
     'index' => 'commentaire.index',

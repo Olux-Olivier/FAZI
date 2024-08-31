@@ -12,8 +12,48 @@ use Illuminate\Support\Facades\Auth;
 
 class BienController extends Controller
 {
+    public function acceuil(Request $request)
+    {
+        $query = Bien::query();
+
+        if($request->has('commune')){
+            $query->where('commune',$request->input('commune'));
+        }
+        $BienLocations =  $query->clone()->where('type_bien','Location')
+            ->take(5)
+            ->get();
+        $ImagesBienLocations = $BienLocations->map(function ($Bien) {
+            $ImageBiens = Images::where('bien_id', $Bien->id)->first();
+            $Images = $ImageBiens ? json_decode($ImageBiens->images) : [];
+            $ImagePrincipale = $Images[0] ?? null;
+
+            return [
+                'id' => $Bien->id,
+                'imagePrincipale' => $ImagePrincipale,
+            ];
+        });
+
+        $BienVentes = $query->clone()->where('type_bien', 'Vente')
+            ->take(5)
+            ->get();
+
+        $ImagesBienVentes = $BienVentes->map(function ($Bien) {
+            $ImageBiens = Images::where('bien_id', $Bien->id)->first();
+            $Images = $ImageBiens ? json_decode($ImageBiens->images) : [];
+            $ImagePrincipale = $Images[0] ?? null;
+
+            return [
+                'id' => $Bien->id,
+                'imagePrincipale' => $ImagePrincipale,
+            ];
+        });
+
+
+        return view('accueil', compact('ImagesBienVentes', 'ImagesBienLocations'));
+    }
     public function index()
     {
+
         if(Auth::user()->categorie == 2){
             /*
             $user = Abonnement::where('user_id', Auth::user()->id)->get();
@@ -24,14 +64,58 @@ class BienController extends Controller
         }
         return to_route('anauthorize');
     }
+
+    public function bienLocation(Request $request){
+        $query = Bien::query();
+
+        if($request->has('commune')){
+            $query->where('commune',$request->input('commune'));
+        }
+        $BienLocations =  $query->clone()->where('type_bien','Location')
+            ->take(5)
+            ->get();
+        $ImagesBienLocations = $BienLocations->map(function ($Bien) {
+            $ImageBiens = Images::where('bien_id', $Bien->id)->first();
+            $Images = $ImageBiens ? json_decode($ImageBiens->images) : [];
+            $ImagePrincipale = $Images[0] ?? null;
+
+            return [
+                'id' => $Bien->id,
+                'imagePrincipale' => $ImagePrincipale,
+            ];
+        });
+        return view('bien.bienLocation', compact('ImagesBienLocations'));
+    }
+    public function bienVente(Request $request)
+    {
+        $query = Bien::query();
+
+        if($request->has('commune')){
+            $query->where('commune',$request->input('commune'));
+        }
+
+        $BienVentes = $query->clone()->where('type_bien', 'Vente')
+            ->take(5)
+            ->get();
+
+        $ImagesBienVentes = $BienVentes->map(function ($Bien) {
+            $ImageBiens = Images::where('bien_id', $Bien->id)->first();
+            $Images = $ImageBiens ? json_decode($ImageBiens->images) : [];
+            $ImagePrincipale = $Images[0] ?? null;
+
+            return [
+                'id' => $Bien->id,
+                'imagePrincipale' => $ImagePrincipale,
+            ];
+        });
+
+        return view('bien.bienVente', compact('ImagesBienVentes'));
+    }
     public function anauthorized(){
         return view('bien.anauthorize');
     }
 
-    public function create(Request $request)
-    {
 
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -109,27 +193,6 @@ class BienController extends Controller
             return view('bien.show', compact('bien', 'imagePrincipale', 'ToutesImages', 'OthersWithImages'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Bien $bien)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Bien $bien)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Bien $bien)
-    {
-        //
-    }
 }
