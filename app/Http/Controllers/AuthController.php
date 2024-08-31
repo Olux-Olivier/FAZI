@@ -28,6 +28,9 @@ class AuthController extends Controller
         $credentials = $request->validated();
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
+            if(Auth::user()->categorie == 3){
+                return redirect()->intended(route('dashboard'));
+            }
             return redirect()->intended(route('index'));
         }
         return to_route('login')->withErrors([

@@ -15,11 +15,11 @@ class BienController extends Controller
     public function index()
     {
         if(Auth::user()->categorie == 2){
-
+            /*
             $user = Abonnement::where('user_id', Auth::user()->id)->get();
             if($user->isEmpty()){
                 return to_route('contract');
-            }
+            }*/
             return view('bien.index');
         }
         return to_route('anauthorize');
@@ -38,6 +38,10 @@ class BienController extends Controller
      */
     public function store(BienRequest $request)
     {
+        $user = Abonnement::where('user_id', Auth::user()->id)->get();
+        if($user->isEmpty()){
+            return to_route('abonnement');
+        }
 
         /** @var UploadedFile $image_principale */
 

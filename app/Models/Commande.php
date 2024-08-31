@@ -9,7 +9,14 @@ class Commande extends Model
 {
     use HasFactory;
 
-    
+    protected $fillable = [
+        'nom',
+        'prenom',
+        'telephone',
+        'adresse',
+        'typecommande',
+        'user_id',
+    ];
 
     public function users()
     {
