@@ -32,6 +32,9 @@ Route::resource('commentaire', CommentaireController::class)->names([
     'update' => 'commentaire.update'
 ]);
 
+Route::middleware('auth')->group(function () {
+    Route::get('commentaire/create', [CommentaireController::class, 'create'])->name('commentaire.create');
+});
 
 Route::get('/admin',function () {
     User::create([

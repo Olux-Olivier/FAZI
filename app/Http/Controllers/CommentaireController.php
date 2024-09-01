@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Commentaire;
+use App\Models\Images;
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Requests\CommentaireRequest;
+use Illuminate\Support\Facades\Auth;
 
 class CommentaireController extends Controller
 {
@@ -13,8 +17,14 @@ class CommentaireController extends Controller
      */
     public function index()
     {
-        $commentaires = Commentaire::All();
-        return view('pages.commentaire.index', ['commentaires' => $commentaires]);
+        $All = Commentaire::All();
+        $Commentaires = $All->map(function ($commentaire) {
+            $user = User::where('id', $commentaire->user_id)->first();
+            $relativeDate = Carbon::parse($commentaire->created_at)->diffForHumans();
+
+            return ['nom'=>$user->nom, 'prenom'=>$user->prenom,'id_commentaire'=>$commentaire->id,'commentaire'=>$commentaire->message,'user_id'=>$commentaire->user_id, 'date'=>$relativeDate];
+        });
+        return view('pages.commentaire.index', ['commentaires' => $Commentaires]);
     }
 
     /**
@@ -47,15 +57,18 @@ class CommentaireController extends Controller
      */
     public function edit(Commentaire $commentaire)
     {
-        //
+        if(Auth::user()->id == $commentaire->user_id){
+            return view('pages.commentaire.edit', ['commentaire' => $commentaire]);
+        }
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Commentaire $commentaire)
+    public function update(CommentaireRequest $request, Commentaire $commentaire)
     {
-        //
+        $commentaire->update($request->validated());
+        return to_route('commentaire.index');
     }
 
     /**
@@ -63,6 +76,7 @@ class CommentaireController extends Controller
      */
     public function destroy(Commentaire $commentaire)
     {
-        //
+        $commentaire->delete();
+        return to_route('commentaire.index');
     }
 }

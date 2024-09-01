@@ -16,6 +16,7 @@ class Commande extends Model
         'adresse',
         'typecommande',
         'user_id',
+        'id_bien'
     ];
 
     public function users()

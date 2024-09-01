@@ -25,6 +25,7 @@
             >
                 Dashboard
             </a>
+
         @else
             <a
                 href="{{ route('login') }}"
@@ -40,7 +41,10 @@
                     Register
                 </a>
             @endif
+
         @endauth
+            <a href="{{route('abonnement')}}">S'abonner</a>
+            <a href="{{route('commentaire.index')}}">Consulter les commentaires</a>
     </nav>
 @endif
 
@@ -77,3 +81,4 @@
 </form>
 
 
+<a href="{{ url('/commentaire/create') }}">Laisser un commentaire</a>

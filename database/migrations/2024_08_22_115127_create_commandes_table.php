@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::disableForeignKeyConstraints();
         Schema::create('commandes', function (Blueprint $table) {
             $table->id();
             $table->string('nom');
@@ -19,6 +20,7 @@ return new class extends Migration
             $table->string('adresse');
             $table->string('typecommande');
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('bien_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

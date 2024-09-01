@@ -9,8 +9,8 @@
     <h1>Poster un commentaire</h1>
     <form method="post" action="/commentaire">
         @csrf
-        <input type="text" name="message">
-        <input type="number" name="user_id">
+        <textarea name="message" value="" id="" cols="30" rows="10"></textarea>
+        <input type="hidden" name="user_id" value="{{\Illuminate\Support\Facades\Auth::user()->id}}">
         <input type="submit" value="Publier">
 
     </form>
