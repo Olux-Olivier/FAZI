@@ -12,10 +12,7 @@
     <br>
     <a href="{{route('admin-dashboard.compteProprietaire')}}">Voir les comptes proprietaires</a>
     <br>
-    <a href="">Voir toutes les commandes</a>
-    <br>
-    <a href="">Voir toutes les commandes</a>
-    <br>
-    <a href="">Voir toutes les commandes</a>
+    <a href="{{route('admin-dashboard.commandes')}}">Voir toutes les commandes</a>
+
 </body>
 </html>

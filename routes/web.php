@@ -58,9 +58,11 @@ Route::match(['get','post'],'/return_url', [\App\Http\Controllers\AbonnementCont
 Route::post('/commande',[\App\Http\Controllers\CommandeController::class,'index'])->middleware(['auth']);
 Route::post('/validerCommande',[\App\Http\Controllers\CommandeController::class,'store'])->middleware(['auth']);
 Route::get('/commandeSucces',[\App\Http\Controllers\CommandeController::class, 'succes'])->middleware(['auth'])->name('commande.succes');
+Route::delete('/commande/{commande}',[App\Http\Controllers\CommandeController::class,'destroy'])->middleware(['auth'])->name('commande.destroy');
 
 Route::get('/mes-biens',[\App\Http\Controllers\BienController::class,'MesBiens'])->middleware(['auth'])->name('mes-biens');
 
 Route::get('/admin-dashboard',[\App\Http\Controllers\AdminController::class,'index'])->middleware(['auth'])->name('admin-dashboard');
 Route::get('/adim-dashboard/compteClient',[\App\Http\Controllers\AdminController::class,'compteClient'])->middleware(['auth'])->name('adim-dashboard.compteClient');
 Route::get('/admin-dashboard/compteProprietaire',[\App\Http\Controllers\AdminController::class,'compteProprietaire'])->middleware(['auth'])->name('admin-dashboard.compteProprietaire');
+Route::get('/admin-dashboard/commandes',[\App\Http\Controllers\AdminController::class,'commandes'])->middleware(['auth'])->name('admin-dashboard.commandes');

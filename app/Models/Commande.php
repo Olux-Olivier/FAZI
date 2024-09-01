@@ -16,11 +16,17 @@ class Commande extends Model
         'adresse',
         'typecommande',
         'user_id',
-        'id_bien'
+        'bien_id'
     ];
 
     public function users()
     {
         return $this->belongsTo(User::class);
+    }
+
+
+    public function bien()
+    {
+        return $this->belongsTo(Bien::class, 'bien_id');
     }
 }

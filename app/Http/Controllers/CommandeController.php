@@ -48,10 +48,12 @@ class CommandeController extends Controller
             'typecommande' => $type_bien,
             'adresse' => $request->adresse,
             'user_id' => Auth::id(),
+            'bien_id' => $bien_id,
         ]);
         $mailAdmin = User::where('categorie',3 )->get('email');
         $this->sendmail($mailAdmin[0]->email, $request->nom, $request->prenom, $request->Adresse, $request->telephone,
         $type_bien);
+
 
         return redirect()->route('commande.succes');
     }
@@ -89,7 +91,8 @@ class CommandeController extends Controller
      */
     public function destroy(Commande $commande)
     {
-        //
+        $commande->delete();
+        return  to_route('admin-dashboard.commandes');
     }
     public function sendmail($mailAdministrateur, $nomUtilisateur, $PrenomUtilisateur, $Adresse, $Numero, $Type_bien){
 

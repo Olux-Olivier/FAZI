@@ -55,7 +55,15 @@
             <img src="{{asset('storage/'.$ImageBien['imagePrincipale'])}}" height="200px" width="200px" alt="" >
         </a>
     </div>
+    @php if(\Illuminate\Support\Facades\Auth::user()->categorie == 3){@endphp
 
+    <form action="{{route('bien.destroy', $ImageBien['id'])}}" method="post">
+        @csrf
+        @method('delete')
+        <button type="submit">Retirer le client</button>
+    </form>
+
+    @php }@endphp
 @empty
     Aucune suggestion pour cette categorie
 @endforelse
@@ -72,7 +80,15 @@
         </a>
     </div>
     @auth
+        @php if(\Illuminate\Support\Facades\Auth::user()->categorie == 3){@endphp
 
+            <form action="{{route('bien.destroy', $ImageBien['id'])}}" method="post">
+                @csrf
+                @method('delete')
+                <button type="submit">Retirer le client</button>
+            </form>
+
+        @php }@endphp
     @endauth
 @empty
     Aucune suggestion pour cette categorie
