@@ -71,7 +71,9 @@
             <img src="{{asset('storage/'.$ImageBien['imagePrincipale'])}}" height="200px" width="200px" alt="" >
         </a>
     </div>
+    @auth
 
+    @endauth
 @empty
     Aucune suggestion pour cette categorie
 @endforelse

@@ -55,10 +55,12 @@ Route::post('/abonnement', [\App\Http\Controllers\AbonnementController::class, '
 Route::match(['get','post'],'/notify_url', [\App\Http\Controllers\AbonnementController::class, 'notify_url'])->name('notify_url');
 Route::match(['get','post'],'/return_url', [\App\Http\Controllers\AbonnementController::class, 'return_url'])->name('return_url');
 
-
 Route::post('/commande',[\App\Http\Controllers\CommandeController::class,'index'])->middleware(['auth']);
 Route::post('/validerCommande',[\App\Http\Controllers\CommandeController::class,'store'])->middleware(['auth']);
 Route::get('/commandeSucces',[\App\Http\Controllers\CommandeController::class, 'succes'])->middleware(['auth'])->name('commande.succes');
 
 Route::get('/mes-biens',[\App\Http\Controllers\BienController::class,'MesBiens'])->middleware(['auth'])->name('mes-biens');
 
+Route::get('/admin-dashboard',[\App\Http\Controllers\AdminController::class,'index'])->middleware(['auth'])->name('admin-dashboard');
+Route::get('/adim-dashboard/compteClient',[\App\Http\Controllers\AdminController::class,'compteClient'])->middleware(['auth'])->name('adim-dashboard.compteClient');
+Route::get('/admin-dashboard/compteProprietaire',[\App\Http\Controllers\AdminController::class,'compteProprietaire'])->middleware(['auth'])->name('admin-dashboard.compteProprietaire');
