@@ -71,12 +71,7 @@ class AbonnementController extends Controller
         if($response_body['code'] == '201')
         {
             $payment_link = $response_body["data"]["payment_url"]; // Recuperation de l'url de paiement
-            Abonnement::create([
-                'numero' => $request->numero,
-                'montant' => $request->amount,
-                'user_id' => Auth::user()->id,
-            ]);
-            $this->sendmail(Auth::user()->email,Auth::user()->nom);
+
             //Enregistrement des informations dans la base de donnée
             //Ensuite redirection vers la page de paiement
             return redirect($payment_link);
@@ -91,7 +86,7 @@ class AbonnementController extends Controller
     //configuration de l'api la notification
     public function notify_url (Request $request)
     {
-        Log::info($request);
+
         /* 1- Recuperation des paramètres postés sur l'url par CinetPay
          * https://docs.cinetpay.com/api/1.0-fr/checkout/notification#les-etapes-pour-configurer-lurl-de-notification
          * */
@@ -119,7 +114,12 @@ class AbonnementController extends Controller
             $response_body = json_decode($response,true);
             if($response_body['code'] == '00')
             {
-
+                Abonnement::create([
+                    'numero' => $request->numero,
+                    'montant' => $request->amount,
+                    'user_id' => Auth::user()->id,
+                ]);
+                $this->sendmail(Auth::user()->email,Auth::user()->nom);
 
                 /* correct, on délivre le service
                  * https://docs.cinetpay.com/api/1.0-fr/checkout/notification#3-delivrer-un-service*/

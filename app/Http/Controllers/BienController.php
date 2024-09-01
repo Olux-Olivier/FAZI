@@ -21,6 +21,7 @@ class BienController extends Controller
         }
         $BienLocations =  $query->clone()->where('type_bien','Location')
             ->take(5)
+            ->orderBy('created_at','DESC')
             ->get();
         $ImagesBienLocations = $BienLocations->map(function ($Bien) {
             $ImageBiens = Images::where('bien_id', $Bien->id)->first();
@@ -34,6 +35,7 @@ class BienController extends Controller
         });
 
         $BienVentes = $query->clone()->where('type_bien', 'Vente')
+            ->orderBy('created_at','DESC')
             ->take(5)
             ->get();
 
@@ -49,7 +51,11 @@ class BienController extends Controller
         });
 
 
-        return view('accueil', compact('ImagesBienVentes', 'ImagesBienLocations'));
+        return view('accueil', [
+            'ImagesBienVentes' => $ImagesBienVentes,
+            'ImagesBienLocations'=>$ImagesBienLocations,
+            'input' => $request->commune
+        ]);
     }
     public function index()
     {
@@ -84,7 +90,10 @@ class BienController extends Controller
                 'imagePrincipale' => $ImagePrincipale,
             ];
         });
-        return view('bien.bienLocation', compact('ImagesBienLocations'));
+        return view('bien.bienLocation', [
+            'ImagesBienLocations'=>$ImagesBienLocations,
+            'input' => $request->commune
+        ]);
     }
     public function bienVente(Request $request)
     {
@@ -109,7 +118,7 @@ class BienController extends Controller
             ];
         });
 
-        return view('bien.bienVente', compact('ImagesBienVentes'));
+        return view('bien.bienVente', ['ImagesBienVentes'=>$ImagesBienVentes, 'input' => $request->commune]);
     }
     public function anauthorized(){
         return view('bien.anauthorize');
@@ -165,6 +174,8 @@ class BienController extends Controller
             'images' => json_encode($imagesPaths),
             'bien_id'=> $bien->id,
         ]);
+
+        return redirect()->route('index');
     }
     public function show(string $id)
     {
@@ -193,6 +204,26 @@ class BienController extends Controller
             return view('bien.show', compact('bien', 'imagePrincipale', 'ToutesImages', 'OthersWithImages'));
     }
 
+    public function MesBiens()
+    {
+        if(Auth::user()->categorie == 2 || Auth::user()->categorie == 3){
+            $Biens = Bien::where('user_id',Auth::user()->id)
+                ->orderBy('created_at','DESC')
+                ->get();
 
+            $ImagesBiens = $Biens->map(function ($Bien) {
+                $ImageBiens = Images::where('bien_id', $Bien->id)->first();
+                $Images = $ImageBiens ? json_decode($ImageBiens->images) : [];
+                $ImagePrincipale = $Images[0] ?? null;
 
+                return [
+                    'id' => $Bien->id,
+                    'chambre' =>$Bien->chambre,
+                    'imagePrincipale' => $ImagePrincipale,
+                ];
+            });
+
+            return view('bien.mesbien',compact('ImagesBiens'));
+        }
+    }
 }

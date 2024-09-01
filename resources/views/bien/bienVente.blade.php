@@ -5,13 +5,13 @@
             <form action="" method="get">
                 <select name="commune">
                     <option value="">Choisir une commune</option>
-                    <option value="annexe">Annexe</option>
-                    <option value="lubumbashi">Lubumbashi</option>
-                    <option value="katuba">Katuba</option>
-                    <option value="kenya">Kenya</option>
-                    <option value="kamalondo">Kamalondo</option>
-                    <option value="rwashi">Rwashi</option>
-                    <option value="kampemba">Kampemba</option>
+                    <option value="annexe" {{ old('commune', $input) == 'annexe' ? 'selected' : '' }}>Annexe</option>
+                    <option value="lubumbashi" {{ old('commune', $input) == 'lubumbashi' ? 'selected' : '' }}>Lubumbashi</option>
+                    <option value="katuba" {{ old('commune', $input) == 'katuba' ? 'selected' : '' }}>Katuba</option>
+                    <option value="kenya" {{ old('commune', $input) == 'kenya' ? 'selected' : '' }}>Kenya</option>
+                    <option value="kamalondo" {{ old('commune', $input) == 'kamalondo' ? 'selected' : '' }}>Kamalondo</option>
+                    <option value="rwashi" {{ old('commune', $input) == 'rwashi' ? 'selected' : '' }}>Rwashi</option>
+                    <option value="kampemba" {{ old('commune', $input) == 'kampemba' ? 'selected' : '' }}>Kampemba</option>
                 </select>
                 <input type="number" name="prix" placeholder="prix">
                 <input type="submit" value="Rechercher">

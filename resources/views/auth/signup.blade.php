@@ -38,19 +38,7 @@
         }
     </style>
 </head>
-<div id="myModal" class="modal" style="display: none;">
-    <div class="modal-content">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-        <br>
-        <br>
-
-        <p>Voulez-vous continuer ?</p>
-        <button id="acceptBtn">Accepter</button>
-        <button id="declineBtn">Refuser</button>
-    </div>
-</div>
 <form action="/register" method="post">
     @csrf
     @error('nom')
@@ -95,37 +83,4 @@
 
     <input type="submit" value="S'enregistrer">
 </form>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var modal = document.getElementById("myModal");
-        var acceptBtn = document.getElementById("acceptBtn");
-        var declineBtn = document.getElementById("declineBtn");
-        var span = document.getElementsByClassName("close")[0];
 
-        // Afficher le modal lorsque la page se charge
-        modal.style.display = "block";
-
-        // Fermer le modal lorsque l'utilisateur clique sur "Accepter"
-        acceptBtn.onclick = function () {
-            modal.style.display = "none";
-        }
-
-        // Rediriger vers la page précédente lorsque l'utilisateur clique sur "Refuser"
-        declineBtn.onclick = function () {
-            window.history.back();
-        }
-
-        // Fermer le modal lorsque l'utilisateur clique sur "X"
-        span.onclick = function () {
-            modal.style.display = "none";
-        }
-
-        // Fermer le modal lorsque l'utilisateur clique en dehors du modal
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-    });
-
-</script>
