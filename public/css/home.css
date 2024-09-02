@@ -226,29 +226,48 @@ html .formStandard, body .formStandard {
 }
 html .formStandard form, body .formStandard form {
   width: 25em;
+  display: grid;
 }
-html .formStandard form h3, body .formStandard form h3 {
+html .formStandard form h1, body .formStandard form h1 {
   font-size: 25px;
+  margin-bottom: 1em;
+}
+html .formStandard form p, body .formStandard form p {
+  color: red;
   margin-bottom: 0.8em;
 }
-html .formStandard input, html .formStandard textarea, body .formStandard input, body .formStandard textarea {
+html .formStandard form .div-1, body .formStandard form .div-1 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1em;
+}
+html .formStandard input, html .formStandard textarea, html .formStandard select, body .formStandard input, body .formStandard textarea, body .formStandard select {
   padding: 0.8em;
   display: block;
   width: 100%;
   margin-bottom: 0.8em;
+  color: black;
+  font-weight: 400;
+  font-size: 15px;
 }
 html .formStandard textarea, body .formStandard textarea {
   height: 8em;
 }
-html .formStandard input, body .formStandard input {
+html .formStandard input, html .formStandard button, body .formStandard input, body .formStandard button {
   width: 100%;
-  font-size: 18px;
+  padding: 1em;
   border-radius: 3px;
-  border: none;
+  border: 1px solid #646464;
+}
+html .formStandard input[type=submit], html .formStandard button, body .formStandard input[type=submit], body .formStandard button {
+  padding: 1em;
   background-color: #51B8FE;
-  color: white;
   font-weight: bold;
   cursor: pointer;
+  border: none;
+  font-size: 16px;
+  margin-bottom: 0.8em;
+  color: white;
 }
 
 /*# sourceMappingURL=home.css.map */
