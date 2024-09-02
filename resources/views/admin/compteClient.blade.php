@@ -6,7 +6,7 @@
     <form action="{{route('bien.destroy', $user->id)}}" method="post">
         @csrf
         @method('delete')
-        <button type="submit">Retirer le client</button>
+        <button type="submit">Supprimer le compte</button>
     </form>
 @empty
     Aucun client
