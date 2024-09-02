@@ -124,7 +124,11 @@ class BienController extends Controller
         return view('bien.anauthorize');
     }
 
-
+    public function destroy(Bien $bien)
+    {
+        $bien->delete();
+        return to_route('index');
+    }
 
     /**
      * Store a newly created resource in storage.

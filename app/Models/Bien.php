@@ -34,4 +34,11 @@ class Bien extends Model
     {
         return $this->hasMany(Image::class);
     }
+
+    public function commandes()
+    {
+        return $this->hasMany(Commande::class, 'bien_id');
+    }
+
+
 }
