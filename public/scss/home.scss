@@ -4,6 +4,7 @@
     box-sizing: border-box;
     font-family: Roboto;
 }
+
 html,body {
     height: 100vh;
     body:100vh;
@@ -276,6 +277,44 @@ html, body{
             font-size: 16px;
             margin-bottom: .8em;
             color: white;
+        }
+    }
+}
+
+html, body{
+    .container{
+        .div-details{
+            display: flex;
+            align-items: center;
+            .cards .card{
+                background-color: red;
+                height: 25em;
+                width: 25em;
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+            form{
+                display: flex;
+                flex-direction: column;
+            }
+            button{
+                padding: 0.8em;
+                border-radius: 3px;
+                border: none;
+                background-color: #51B8FE;
+                color: white;
+                margin-bottom: 1em;
+                width: 15em;
+                margin-left: 0.8em;
+                font-size: 16px;
+                cursor: pointer;
+            }
+            .action .details{
+                margin-left: .8em;
+            }
         }
     }
 }

@@ -68,54 +68,55 @@
 </div>
 
 <div class="container">
-    <div class="div-bien bienlouer">
+    <div class="div-details">
         <div class="cards">
             <div class="card">
                 <img src="{{asset('storage/'.$imagePrincipale)}}" height="200px" width="200px" alt="" >
             </div>
         </div>
         @auth
-            <form action="/commande" method="post">
-                @csrf
-                <input type="hidden" name="bien_id" value="{{$bien->id}}">
-                <input type="hidden" name="type_bien" value="{{$bien->type_bien}}">
-                <button type="submit">
-                    @if($bien->type_bien === 'location')
-                        Activer la location
-                    @else
-                        Passer une commande
-                    @endif
-                </button>
-            </form>
-            <!-- Bouton pour afficher les détails -->
-            <button id="toggleDetailsBtn">Voir le détail</button>
-
-            <!-- Informations supplémentaires masquées par défaut -->
-            <div id="details" style="display: none;">
-                Description : {{$bien->description}}
-                <br>
-                Chambre : {{$bien->chambre}}
-                <br>
-                Commune : {{$bien->commune}}
-                <br>
-                Loyer : {{$bien->loyer}}
-                <br>
-                Prix de vente : {{$bien->prix_vente}}
-                <br>
-                Surface : {{$bien->surface}} m2
-                <br>
-                Autres images
-                <br>
-                @foreach($ToutesImages as $image)
-                    <img src="{{asset('storage/'.$image)}}" height="70" width="70" alt="">
-                @endforeach
+            <div class="action">
+                <form action="/commande" method="post">
+                    @csrf
+                    <input type="hidden" name="bien_id" value="{{$bien->id}}">
+                    <input type="hidden" name="type_bien" value="{{$bien->type_bien}}">
+                    <button type="submit">
+                        @if($bien->type_bien === 'location')
+                            Activer la location
+                        @else
+                            Passer une commande
+                        @endif
+                    </button>
+                </form>
+                <!-- Bouton pour afficher les détails -->
+                <button id="toggleDetailsBtn">Voir le détail</button>
+                <!-- Informations supplémentaires masquées par défaut -->
+                <div id="details" class="details" style="display: none;">
+                    Description : {{$bien->description}}
+                    <br>
+                    Chambre : {{$bien->chambre}}
+                    <br>
+                    Commune : {{$bien->commune}}
+                    <br>
+                    Loyer : {{$bien->loyer}}
+                    <br>
+                    Prix de vente : {{$bien->prix_vente}}
+                    <br>
+                    Surface : {{$bien->surface}} m2
+                    <br>
+                    Autres images
+                    <br>
+                    @foreach($ToutesImages as $image)
+                        <img src="{{asset('storage/'.$image)}}" height="70" width="70" alt="">
+                    @endforeach
+                </div>
             </div>
         @endauth
     </div>
     <div class="div-bien bienvente">
-        <h1>Bien a Vendre</h1>
+        <h1>Autres Maisons</h1>
         <div class="cards">
-            <h3>Autres Maisons</h3>
+
             @forelse($OthersWithImages as $other)
                 <div class="card">
                     <a href="{{route('bien.show', $other['id'])}}">
