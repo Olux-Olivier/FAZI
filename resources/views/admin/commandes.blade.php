@@ -1,6 +1,5 @@
 <h1>Liste de commandes </h1>
 <div class="container">
-    <h1>Comptes des Propriétaires</h1>
 
     @foreach($commandes as $commande)
         <div>
@@ -8,8 +7,11 @@
             <p>{{ $commande['adresse'] }}</p>
             <p>{{ $commande['telephone'] }}</p>
             <p>Type de commande: {{ $commande['typecommande'] }}</p>
+            <p>Date : {{$commande['date']}}</p>
             @if($commande['imagePrincipale'])
+                <a href="{{route('bien.show',$commande['bien_id'])}}">
                 <img src="{{ asset('storage/' . $commande['imagePrincipale']) }}" height="200" width="auto" alt="Image principale">
+                </a>
             @else
                 <p>Aucune image disponible</p>
             @endif
@@ -17,7 +19,7 @@
         <form action="{{route('commande.destroy', $commande['id'])}}" method="post">
             @csrf
             @method('delete')
-            <button type="submit">Retirer la commande</button>
+            <button type="submit">Supprimer la commande</button>
         </form>
 @endforeach
 

@@ -73,7 +73,6 @@
         <button>Commencer</button>
     </div>
 </div>
-@php if(\Illuminate\Support\Facades\Auth::user()->categorie == 3){@endphp
 
 <div class="container">
     <div class="div-bien bienlouer">

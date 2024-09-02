@@ -56,6 +56,7 @@ class AdminController extends Controller
                 'user_id' => $commande->user_id,
                 'bien_id' => $commande->bien_id,
                 'imagePrincipale' => $imagePrincipale,
+                'date'=>$commande->created_at,
             ];
         });
 
