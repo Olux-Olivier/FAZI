@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/home.css">
     <title>Formulaire de création de bien</title>
     <style>
         #imagePreviewContainer img {
@@ -17,75 +18,64 @@
     </style>
 </head>
 <body>
-<form action="" method="post" enctype="multipart/form-data">
-    @csrf
-    <h3>Créer bien</h3>
-    <input type="number" name="chambre" placeholder="Nombre chambre">
-    <br><br>
+<div class="form-div">
+    <form action="" method="post" enctype="multipart/form-data">
+        @csrf
+        <h3>Créer un bien</h3>
+        <label>Type des biens</label>
+        <div class="div-in">
+            <select name="type_bien" id="type_bien" onchange="toggleFields()">
+                <option value="vente">Vente</option>
+                <option value="location">Location</option>
+            </select>
+            <select name="commune">
+                <option value="">Choisir une commune</option>
+                <option value="annexe">Annexe</option>
+                <option value="lubumbashi">Lubumbashi</option>
+                <option value="katuba">Katuba</option>
+                <option value="kenya">Kenya</option>
+                <option value="kamalondo">Kamalondo</option>
+                <option value="rwashi">Rwashi</option>
+                <option value="kampemba">Kampemba</option>
+            </select>
+            <input type="number" name="chambre" placeholder="Nombre chambre">
+        </div>
+        <div class="div-app"></div>
 
-    <label for="type_bien">Type bien</label>
-    <br>
-    <select name="type_bien" id="type_bien" onchange="toggleFields()">
-        <option value="vente">Vente</option>
-        <option value="location">Location</option>
-    </select>
-    <br><br>
+        <textarea name="description" cols="30" rows="10"></textarea>
 
-    <select name="commune">
-        <option value="">Choisir une commune</option>
-        <option value="annexe">Annexe</option>
-        <option value="lubumbashi">Lubumbashi</option>
-        <option value="katuba">Katuba</option>
-        <option value="kenya">Kenya</option>
-        <option value="kamalondo">Kamalondo</option>
-        <option value="rwashi">Rwashi</option>
-        <option value="kampemba">Kampemba</option>
-    </select>
-    <br><br>
+        <div id="location_fields">
+            <input type="text" name="loyer" placeholder="Loyer">
+            <input type="text" name="garantie" placeholder="Garantie">
+        </div>
+        <div class="div-inputs">
+            <div id="vente_fields">
+                <input type="text" name="prix_vente" placeholder="Prix de vente">
+            </div>
+            <input type="text" name="quartier" placeholder="Quartier">
 
-    <textarea name="description" cols="30" rows="10"></textarea>
-    <br><br>
-
-    <div id="location_fields">
-        <input type="text" name="loyer" placeholder="Loyer">
-        <br><br>
-        <input type="text" name="garantie" placeholder="Garantie">
-        <br><br>
-    </div>
-
-    <input type="text" name="avenue" placeholder="Avenue/rue">
-    <br><br>
-
-    <div id="vente_fields">
-        <input type="text" name="prix_vente" placeholder="Prix de vente">
-        <br><br>
-    </div>
-
-    <input type="text" name="quartier" placeholder="Quartier">
-    <br><br>
-    <input type="text" name="surface" placeholder="Surface en m2">
-    <br><br>
-
-    <label for="image_principale">Image principale</label>
-    <br>
-    <input type="file" name="image_principale" id="image_principale" onchange="previewImage()">
-    <br><br>
-
-    <img id="imagePreview" alt="Aperçu de l'image principale"/>
-    <br><br>
-
-    <label for="photo">D'autres images</label>
-    <br>
-    <input type="file" id="photo" name="image[]" accept="image/*" multiple onchange="previewImages()" required>
-
-    <div class="file-upload-container">
-        <p>Prévisualisation des Photos</p>
-        <div id="imagePreviewContainer"></div>
-    </div>
-
-    <br>
-    <input type="submit" value="Enregistrer un bien">
-</form>
+            <input type="text" name="avenue" placeholder="Avenue/rue">
+            <input type="text" name="surface" placeholder="Surface en m2">
+        </div>
+        <div class="div-image">
+            <div class="div-img">
+                <label for="image_principale">Image principale</label>
+                <input type="file" name="image_principale" id="image_principale" onchange="previewImage()">
+            </div>
+            <div class="div-img">
+                <label for="photo">D'autres images</label>
+                <input type="file" id="photo" name="image[]" accept="image/*" multiple onchange="previewImages()" required>
+            </div>
+        </div>
+        <label>Prévisualisation des Photos</label>
+        <div class="file-upload-container">
+            <img id="imagePreview" alt="Aperçu de l'image principale"/>
+            <div id="imagePreviewContainer"></div>
+        </div>
+        <br>
+        <input type="submit" value="Enregistrer un bien">
+    </form>
+</div>
 
 <script>
     function previewImage() {

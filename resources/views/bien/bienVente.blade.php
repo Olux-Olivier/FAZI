@@ -16,7 +16,6 @@
                 <input type="number" name="prix" placeholder="prix">
                 <input type="submit" value="Rechercher">
             </form>
-
         @else
             <a
                 href="{{ route('login') }}"
@@ -42,7 +41,6 @@
             <img src="{{asset('storage/'.$ImageBien['imagePrincipale'])}}" height="200px" width="200px" alt="" >
         </a>
     </div>
-
 @empty
     Aucun bien trouvé
 @endforelse

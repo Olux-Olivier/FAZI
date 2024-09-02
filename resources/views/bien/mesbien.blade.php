@@ -7,7 +7,6 @@
             Chambre : {{$Bien['chambre']}}
         </div>
     </div>
-
 @empty
     Vous n'avez aucun bien
 @endforelse

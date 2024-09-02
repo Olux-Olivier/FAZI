@@ -16,7 +16,6 @@
                 <input type="number" name="prix" placeholder="prix">
                 <input type="submit" value="Rechercher">
             </form>
-
         @else
             <a
                 href="{{ route('login') }}"

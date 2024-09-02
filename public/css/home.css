@@ -1,0 +1,254 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Roboto;
+}
+
+html, body {
+  height: 100vh;
+  body: 100vh;
+}
+html .header, body .header {
+  position: relative;
+  height: 30em;
+}
+html .header:after, body .header:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: rgba(0, 35, 81, 0.8);
+  top: 0;
+  z-index: -1;
+}
+html .header img, body .header img {
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+html .header .div-title-links, body .header .div-title-links {
+  height: 3em;
+  width: 100%;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5em;
+  padding-top: 2em;
+  font-size: 15px;
+}
+html .header .div-title-links a, body .header .div-title-links a {
+  margin-left: 1.8em;
+  text-decoration: none;
+  color: white;
+}
+html .header .div-title-links h3, body .header .div-title-links h3 {
+  font-size: 2.5em;
+  color: white;
+}
+html .header .div-title-links h3 span, body .header .div-title-links h3 span {
+  color: #5DBEFF;
+}
+html .header .hero-bannere, body .header .hero-bannere {
+  margin-top: 2em;
+  padding: 1.5em;
+}
+html .header .hero-bannere h3, body .header .hero-bannere h3 {
+  font-size: 4.5em;
+  width: 12em;
+  color: white;
+}
+html .header .hero-bannere h3 span, body .header .hero-bannere h3 span {
+  color: #5DBEFF;
+}
+html .header .hero-bannere button, body .header .hero-bannere button {
+  padding: 1em;
+  background-color: #51B8FE;
+  border-radius: 8px;
+  margin-top: 0.8em;
+  color: white;
+  border: none;
+  width: 10em;
+  font-size: 18px;
+  cursor: pointer;
+}
+html .container, body .container {
+  width: 100%;
+  padding: 4em;
+}
+html .container .div-bien h1, body .container .div-bien h1 {
+  color: #424242;
+  margin-bottom: 0.9em;
+  margin-top: 0.8em;
+  font-size: 35px;
+}
+html .container .div-bien .cards, body .container .div-bien .cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  place-items: center;
+}
+html .container .div-bien .cards .card, body .container .div-bien .cards .card {
+  height: 20em;
+  width: 20em;
+  border-radius: 3px;
+}
+html .container .div-bien .cards .card img, body .container .div-bien .cards .card img {
+  border-radius: 3px;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  transition: all 0.3s ease-in-out;
+}
+html .container .div-bien .cards .card img:hover, body .container .div-bien .cards .card img:hover {
+  transform: scale(1.05);
+}
+html .container .div-bien form, body .container .div-bien form {
+  margin-left: 2.8em;
+  margin-top: 3em;
+}
+html .container .div-bien form input[type=submit], body .container .div-bien form input[type=submit] {
+  border: none;
+  background-color: white;
+  font-size: 18px;
+  cursor: pointer;
+  color: #0973FF;
+}
+html .footer, body .footer {
+  height: 10em;
+  background-color: #002B41;
+  padding: 4em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+html .footer .footerIcone h2, body .footer .footerIcone h2 {
+  font-size: 50px;
+  color: white;
+}
+html .footer .footerIcone h2 span, body .footer .footerIcone h2 span {
+  color: #51B8FE;
+}
+html .footer p, body .footer p {
+  color: white;
+  font-size: 25px;
+  width: 20em;
+}
+
+html .form-div, body .form-div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+html .form-div form, body .form-div form {
+  height: 25em;
+  width: 35em;
+  margin-top: -7em;
+}
+html .form-div form h3, body .form-div form h3 {
+  margin-bottom: 1em;
+  font-size: 30px;
+}
+html .form-div form select, html .form-div form input, html .form-div form textarea, body .form-div form select, body .form-div form input, body .form-div form textarea {
+  padding: 1em;
+  width: 100%;
+  border-radius: 3px;
+  border: 1px solid #757575;
+}
+html .form-div form input[type=submit], body .form-div form input[type=submit] {
+  background-color: #5DBEFF;
+  color: white;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+html .form-div form .div-inputs, body .form-div form .div-inputs {
+  display: grid;
+  gap: 0.8em;
+  grid-template-columns: repeat(4, 1fr);
+}
+html .form-div form .div-in, body .form-div form .div-in {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 1em;
+  gap: 0.8em;
+}
+html .form-div form #location_fields, body .form-div form #location_fields {
+  display: grid !important;
+  gap: 0.8em;
+  grid-template-columns: repeat(2, 1fr);
+  margin-bottom: 0.8em;
+  margin-top: 0.8em;
+}
+html .form-div form .div-image, body .form-div form .div-image {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.8em;
+}
+html .form-div form .div-image label, body .form-div form .div-image label {
+  font-size: 15px;
+  margin-bottom: 0.8em;
+  display: block;
+  margin-top: 0.8em;
+}
+html .form-div form textarea, body .form-div form textarea {
+  height: 5em;
+}
+html .form-div form img, body .form-div form img {
+  height: 5em;
+  width: 5em;
+  border-radius: 3px;
+  display: block;
+  margin-right: 0.1em;
+}
+html .form-div form label, body .form-div form label {
+  display: block;
+  margin-top: 0.2em;
+}
+html .form-div form .file-upload-container, body .form-div form .file-upload-container {
+  margin-top: 0.8em;
+  display: flex;
+  align-items: center;
+}
+html .form-div form .file-upload-container #imagePreviewContainer, body .form-div form .file-upload-container #imagePreviewContainer {
+  display: flex;
+}
+
+html .formStandard, body .formStandard {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+html .formStandard form, body .formStandard form {
+  width: 25em;
+}
+html .formStandard form h3, body .formStandard form h3 {
+  font-size: 25px;
+  margin-bottom: 0.8em;
+}
+html .formStandard input, html .formStandard textarea, body .formStandard input, body .formStandard textarea {
+  padding: 0.8em;
+  display: block;
+  width: 100%;
+  margin-bottom: 0.8em;
+}
+html .formStandard textarea, body .formStandard textarea {
+  height: 8em;
+}
+html .formStandard input, body .formStandard input {
+  width: 100%;
+  font-size: 18px;
+  border-radius: 3px;
+  border: none;
+  background-color: #51B8FE;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=home.css.map */
