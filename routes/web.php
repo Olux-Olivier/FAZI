@@ -66,3 +66,5 @@ Route::get('/admin-dashboard',[\App\Http\Controllers\AdminController::class,'ind
 Route::get('/adim-dashboard/compteClient',[\App\Http\Controllers\AdminController::class,'compteClient'])->middleware(['auth'])->name('adim-dashboard.compteClient');
 Route::get('/admin-dashboard/compteProprietaire',[\App\Http\Controllers\AdminController::class,'compteProprietaire'])->middleware(['auth'])->name('admin-dashboard.compteProprietaire');
 Route::get('/admin-dashboard/commandes',[\App\Http\Controllers\AdminController::class,'commandes'])->middleware(['auth'])->name('admin-dashboard.commandes');
+Route::get('/admin-dashboard/biens',[\App\Http\Controllers\AdminController::class,'biens'])->middleware(['auth'])->name('admin-dashboard.biens');
+Route::delete('/admin-delete/{bien}',[\App\Http\Controllers\AdminController::class,'admin_bien_destroy'])->middleware(['auth'])->name('admin-delete');

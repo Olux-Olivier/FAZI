@@ -20,7 +20,7 @@ class BienController extends Controller
             $query->where('commune',$request->input('commune'));
         }
         $BienLocations =  $query->clone()->where('type_bien','Location')
-            ->take(5)
+            ->take(3)
             ->orderBy('created_at','DESC')
             ->get();
         $ImagesBienLocations = $BienLocations->map(function ($Bien) {
@@ -36,7 +36,7 @@ class BienController extends Controller
 
         $BienVentes = $query->clone()->where('type_bien', 'Vente')
             ->orderBy('created_at','DESC')
-            ->take(5)
+            ->take(3)
             ->get();
 
         $ImagesBienVentes = $BienVentes->map(function ($Bien) {
@@ -78,7 +78,7 @@ class BienController extends Controller
             $query->where('commune',$request->input('commune'));
         }
         $BienLocations =  $query->clone()->where('type_bien','Location')
-            ->take(5)
+            ->take(3)
             ->get();
         $ImagesBienLocations = $BienLocations->map(function ($Bien) {
             $ImageBiens = Images::where('bien_id', $Bien->id)->first();
@@ -127,7 +127,7 @@ class BienController extends Controller
     public function destroy(Bien $bien)
     {
         $bien->delete();
-        return to_route('index');
+        return to_route('mes-biens')->with('succes', 'Le bien a ete supprimer avec succes !');
     }
 
     /**
@@ -179,7 +179,7 @@ class BienController extends Controller
             'bien_id'=> $bien->id,
         ]);
 
-        return redirect()->route('index');
+        return redirect()->route('mes-biens');
     }
     public function show(string $id)
     {
@@ -224,10 +224,26 @@ class BienController extends Controller
                     'id' => $Bien->id,
                     'chambre' =>$Bien->chambre,
                     'imagePrincipale' => $ImagePrincipale,
+                    'id_user' => $Bien->user_id,
+                    'commune' => $Bien->commune,
+                    'quartier' => $Bien->quartier,
+                    'avenue' => $Bien->avenue,
+                    'loyer' => $Bien->loyer,
+                    'garantie' => $Bien->garantie,
+                    'surface' => $Bien->surface,
+                    'prix'=> $Bien->prix_vente,
+                    'type_bien' => $Bien->type_bien,
                 ];
             });
 
             return view('bien.mesbien',compact('ImagesBiens'));
         }
     }
+
+    public function edit(Bien $bien)
+    {
+
+    }
+
+
 }

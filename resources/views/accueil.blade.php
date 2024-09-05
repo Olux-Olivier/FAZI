@@ -30,12 +30,21 @@
                         <input type="number" name="prix" placeholder="prix">
                         <input type="submit" value="Rechercher">
                     </form>
+                    @if(\Illuminate\Support\Facades\Auth::user()->categorie == 2)
                     <a
-                        href="{{ url('/dashboard') }}"
+                        href="{{ route('mes-biens') }}"
                         class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
                     >
                         Dashboard
                     </a>
+                    @else
+                        <a
+                            href="{{ route('index') }}"
+                            class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                        >
+                            Dashboard
+                        </a>
+                    @endif
                     <a
                         href="{{ route('logout') }}"
                         class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"

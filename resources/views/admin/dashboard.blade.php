@@ -14,6 +14,8 @@
     <br>
     <a href="{{route('admin-dashboard.commandes')}}">Voir toutes les commandes</a>
     <br>
+    <a href="{{route('admin-dashboard.biens')}}">Voir tous les biens</a>
+    <br>
     <a href="{{route('index')}}">Retourner a l'acceuil</a>
 </body>
 </html>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bien;
 use App\Models\Commande;
 use App\Models\Images;
 use App\Models\User;
@@ -62,6 +63,39 @@ class AdminController extends Controller
 
         return view('admin.commandes', compact('commandes'));
     }
+    public function biens()
+    {
+        if(Auth::user()->categorie == 3){
+            $Biens = Bien::orderBy('created_at','DESC')
+                ->get();
 
+            $ImagesBiens = $Biens->map(function ($Bien) {
+                $ImageBiens = Images::where('bien_id', $Bien->id)->first();
+                $Images = $ImageBiens ? json_decode($ImageBiens->images) : [];
+                $ImagePrincipale = $Images[0] ?? null;
 
+                return [
+                    'id' => $Bien->id,
+                    'chambre' =>$Bien->chambre,
+                    'imagePrincipale' => $ImagePrincipale,
+                    'id_user' => $Bien->user_id,
+                    'commune' => $Bien->commune,
+                    'quartier' => $Bien->quartier,
+                    'avenue' => $Bien->avenue,
+                    'loyer' => $Bien->loyer,
+                    'garantie' => $Bien->garantie,
+                    'surface' => $Bien->surface,
+                    'prix'=> $Bien->prix_vente,
+                    'type_bien' => $Bien->type_bien,
+                ];
+            });
+        }
+        return view('admin.biens', compact('ImagesBiens'));
+    }
+
+    public function admin_bien_destroy(Bien $bien)
+    {
+        $bien->delete();
+        return to_route('admin-dashboard.commandes');
+    }
 }

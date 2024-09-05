@@ -1,7 +1,5 @@
-<a href="{{route('bien.index')}}">Poster un bien</a>
-<a href="{{route('index')}}">Retour a l'accueil</a>
-<br>
-<br>
+<h3>Tous les biens</h3>
+
 <table class="table table-bordered">
     <thead>
     <tr>
@@ -54,14 +52,12 @@
                 {{$Bien['surface']}}
             </td>
             <td>
-                @if(\Illuminate\Support\Facades\Auth::user()->id == $Bien['id_user'])
-                    <form action="{{ route('bien.destroy', $Bien['id']) }}" method="post">
-                        @csrf
-                        @method('delete')
-                        <button type="submit" class="btn btn-danger">Retirer bien</button>
-                    </form>
-                    <a href="{{route('bien.edit', $Bien['id'])}}">Modifier bien</a>
-                @endif
+                <form action="{{ route('bien.destroy', $Bien['id']) }}" method="post">
+                    @csrf
+                    @method('delete')
+                    <button type="submit" class="btn btn-danger">Retirer bien</button>
+                </form>
+
             </td>
         </tr>
     @empty
@@ -71,7 +67,3 @@
     @endforelse
     </tbody>
 </table>
-
-
-
-

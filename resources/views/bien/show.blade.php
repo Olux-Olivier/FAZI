@@ -75,11 +75,16 @@
             </div>
         </div>
         @auth
+
             <div class="action">
+                @if (\Illuminate\Support\Facades\Auth::user()->categorie != 3)
                 <form action="/commande" method="post">
                     @csrf
                     <input type="hidden" name="bien_id" value="{{$bien->id}}">
                     <input type="hidden" name="type_bien" value="{{$bien->type_bien}}">
+
+
+
                     <button type="submit">
                         @if($bien->type_bien === 'location')
                             Activer la location
@@ -87,7 +92,16 @@
                             Passer une commande
                         @endif
                     </button>
+
                 </form>
+                @else
+                    <form action="{{route('admin-delete',$bien->id)}}" method="post">
+                        @csrf
+                        @method('delete')
+                        <button type="submit">Retire </button>
+                    </form>
+
+                @endif
                 <!-- Bouton pour afficher les détails -->
                 <button id="toggleDetailsBtn">Voir le détail</button>
                 <!-- Informations supplémentaires masquées par défaut -->

@@ -9,26 +9,22 @@
     <title>SDK-LARAVEL</title>
     <style>
         .modal {
-            position: fixed;
             z-index: 1;
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
-            overflow: auto;
+
             background-color: rgb(0, 0, 0);
             background-color: rgba(0, 0, 0, 0.4);
-            display: flex;
             justify-content: center;
             align-items: center;
         }
 
         .modal-content {
-            background-color: #fefefe;
             padding: 20px;
             border: 1px solid #888;
-            width: 300px;
-            text-align: center;
+            width: 40%;
         }
 
         .close {
@@ -51,12 +47,39 @@
 
 <div id="myModal" class="modal" style="display: none;">
     <div class="modal-content">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+        <strong>Contrat d'Abonnement</strong>
+
+        <p> Il a été convenu et arrêté ce qui suit :</p>
+        <p> <i> <strong> Article 1  Abonnement </strong></i>
+         <p>
+        Pour pouvoir publier un bien immobilier sur la plateforme, Le Propriétaire doit souscrire à un abonnement semestriel d'un montant de 5000 Francs Congolais (FC).
+        </p>
+        <p>
+            <i> <strong>Article 2 : Frais de Commission </strong></i>
+            <p>
+            1. En cas de vente réussie de son bien immobilier par l'intermédiaire de la plateforme :
+            <ul>
+            <li> Le Propriétaire s'engage à payer une commission de 10% du prix de vente à L'intermédiaire.</li>
+            <li> L'Acheteur du bien s'engage à payer une commission de 5% du prix de vente à L'intermédiaire.</li>
+            </ul>
+            </p>
+        2. Ces commissions ne seront exigibles et ne seront payées que dans le cas où les négociations entre Le Propriétaire et l'Acheteur sont conclues de manière positive, et qu'une vente effective est réalisée.
+        </p>
+
+        <i><strong> Article 5 : Conformité Légale</strong></i>
+
+        <p>
+        Le présent contrat est rédigé et exécuté en conformité avec les dispositions de l'arrêté du 10 août 2017, qui encadre les transactions immobilières et les obligations des parties dans le cadre de l'intermédiation immobilière.
+        </p>
+        <i><strong> Article 4 : Acceptation des Conditions </strong></i>
+
+        En souscrivant à l'abonnement et en utilisant la plateforme pour publier un bien immobilier, Le Propriétaire accepte expressément les termes et conditions du présent contrat.
         <br>
         <br>
         <p>Voulez-vous continuer ?</p>
         <button id="acceptBtn">Accepter</button>
+        <br>
         <button id="declineBtn">Refuser</button>
     </div>
 </div>
