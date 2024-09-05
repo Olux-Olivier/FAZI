@@ -98,4 +98,10 @@ class AdminController extends Controller
         $bien->delete();
         return to_route('admin-dashboard.commandes');
     }
+
+    public function admin_bien_delete(Bien $bien)
+    {
+        $bien->delete();
+        return to_route('admin-dashboard.biens');
+    }
 }

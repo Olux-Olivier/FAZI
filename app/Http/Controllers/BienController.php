@@ -14,12 +14,22 @@ class BienController extends Controller
 {
     public function acceuil(Request $request)
     {
+
         $query = Bien::query();
 
         if($request->has('commune')){
-            $query->where('commune',$request->input('commune'));
+            $query = $query->where('commune',$request->input('commune'));
         }
-        $BienLocations =  $query->clone()->where('type_bien','Location')
+        if($request->has('prix_vente_max') && $request->prix_vente_max != ''){
+
+            $query = $query->where('prix_vente','>=',$request->input('prix_vente_max'));
+        }
+
+        if($request->has('prix_vente_min') && $request->prix_vente_min != ''){
+            $query = $query->where('prix_vente','<=',$request->input('prix_vente_min'));
+        }
+
+        $BienLocations =   $query->where('type_bien','Location')
             ->take(3)
             ->orderBy('created_at','DESC')
             ->get();
@@ -34,7 +44,7 @@ class BienController extends Controller
             ];
         });
 
-        $BienVentes = $query->clone()->where('type_bien', 'Vente')
+        $BienVentes = $query->where('type_bien', 'Vente')
             ->orderBy('created_at','DESC')
             ->take(3)
             ->get();
@@ -61,11 +71,7 @@ class BienController extends Controller
     {
 
         if(Auth::user()->categorie == 2){
-            /*
-            $user = Abonnement::where('user_id', Auth::user()->id)->get();
-            if($user->isEmpty()){
-                return to_route('contract');
-            }*/
+
             return view('bien.index');
         }
         return to_route('anauthorize');
@@ -242,6 +248,62 @@ class BienController extends Controller
 
     public function edit(Bien $bien)
     {
+
+        $imagebiens = Images::where('bien_id', $bien->id)->first();
+
+        // Récupération des images
+        $ToutesImages = json_decode($imagebiens->images);
+        $imagePrincipale = $ToutesImages[0]; // Première image (image principale)
+        array_shift($ToutesImages); // Supprimer l'image principale du tableau
+
+        return view('bien.index', compact('bien', 'imagePrincipale', 'ToutesImages'));
+    }
+
+    public function update(Bien $request, $id)
+    {
+        $bien = Bien::findOrFail($id);
+        $imageBien = Images::where('bien_id', $bien->id)->first();
+
+        $imagesPaths = json_decode($imageBien->images, true);
+
+        if ($request->hasFile('image_principale')){
+            /** @var UploadedFile $image_principale */
+
+            $image_principale = $request->file('image_principale');
+            $imagePathPrincipale = $image_principale->store('bien', 'public');
+            if (isset($imagesPaths[0])){
+                $imagesPaths[0] = $imagePathPrincipale;
+            }else{
+                array_unshift($imagesPaths, $imagePathPrincipale);
+            }
+        }
+
+        if ($request->hasFile('image')) {
+            foreach ($request->file('image') as $image) {
+                if ($image instanceof UploadedFile) {
+                    $imagePath = $image->store('bien', 'public');
+                    $imagesPaths[] = $imagePath;
+                }
+            }
+        }
+        $bien->update([
+                'chambre' => $request->chambre,
+                'commune' => $request->commune,
+                'type_bien' => $request->type_bien,
+                'quartier' => $request->quartier,
+                'avenue' => $request->avenue,
+                'description' => $request->description,
+                'loyer' => $request->loyer,
+                'garantie' => $request->garantie,
+                'prix_vente' => $request->prix_vente,
+                'surface' => $request->surface,
+        ]);
+
+        $imageBien->update([
+            'images' => json_encode($imagesPaths),
+        ]);
+
+        dd('modifier avec succes');
 
     }
 

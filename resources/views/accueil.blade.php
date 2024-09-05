@@ -27,7 +27,9 @@
                             <option value="rwashi" {{ old('commune', $input) == 'rwashi' ? 'selected' : '' }}>Rwashi</option>
                             <option value="kampemba" {{ old('commune', $input) == 'kampemba' ? 'selected' : '' }}>Kampemba</option>
                         </select>
-                        <input type="number" name="prix" placeholder="prix">
+                        <input type="number" name="prix_vente_max" placeholder="prix de vente max">
+                        <input type="number" name="prix_vente_min" placeholder="prix de vente min">
+                        <input type="number" name="prix" placeholder="prix vente inferieure">
                         <input type="submit" value="Rechercher">
                     </form>
                     @if(\Illuminate\Support\Facades\Auth::user()->categorie == 2)
