@@ -26,7 +26,10 @@
 <div class="form-div">
     <form action="{{ isset($bien) ? route('bien.update', $bien->id) : route('bien.store') }}" method="post" enctype="multipart/form-data">
         @csrf
-        @method('put')
+        @if(isset($bien))
+            @method('put')
+        @endif
+
         <h3>{{ isset($bien) ? 'Modifier le bien' : 'Créer un bien' }}</h3>
         <label>Type des biens</label>
         <div class="div-in">
