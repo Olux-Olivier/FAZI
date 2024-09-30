@@ -49,8 +49,15 @@ html .header .div-title-links h3, body .header .div-title-links h3 {
   font-size: 2.5em;
   color: white;
 }
-html .header .div-title-links h3 span, body .header .div-title-links h3 span {
-  color: #5DBEFF;
+html .header .div-title-links h3, body .header .div-title-links h3 {
+  font-size: 2.5em;
+  color: white;
+}
+
+html .header .div-title-links h3 span, body .header .div-title-links nav form input,
+html .header .div-title-links h3 span, body .header .div-title-links nav form select{
+  padding: .2em;
+  outline: none;
 }
 html .header .hero-bannere, body .header .hero-bannere {
   margin-top: 2em;
@@ -75,6 +82,7 @@ html .header .hero-bannere button, body .header .hero-bannere button {
   font-size: 18px;
   cursor: pointer;
 }
+
 html .container, body .container {
   width: 100%;
   padding: 4em;
@@ -304,4 +312,44 @@ html .container .div-details .action .details, body .container .div-details .act
   margin-left: 0.8em;
 }
 
+/*# d-comment */
+
+html .container .div-details .action .details, body .container .d-comment h3{
+  margin-bottom: 1em;
+}
+html .container .div-details .action .details, body .container .d-comment em{
+  display: flex;
+}
+html .container .div-details .action .details, body .container .d-comment em{
+  font-size: 18px;
+  width: 34em;
+}
+html .container .div-details .action .details, body .container .d-comment em span{
+  font-size: 60px;
+}
+html .container .div-details .action .details, body .container .d-comment .d-info{
+  display: flex;
+  align-items: center;
+  margin-top:1em ;
+}
+html .container .div-details .action .details, body .container .d-comment .d-info h3{
+  width: 20em;
+  display: flex;
+  text-transform: capitalize;
+}
+html .container .div-details .action .details, body .container .d-comment .d-info h3 em{
+  font-weight: 100;
+  width: 10em;
+  text-transform: lowercase;
+}
+html .container .div-details .action .details, body .container .d-comment em span:nth-child(1){
+  margin-top: -0.3em;
+  margin-right: .5em;
+}
+html .container .div-details .action .details, body .container .d-comment em span:nth-child(2){
+  margin-top: 0.2em;
+}
+
 /*# sourceMappingURL=home.css.map */
+
+
