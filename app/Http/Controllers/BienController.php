@@ -19,10 +19,16 @@ class BienController extends Controller
         if($request->has('commune')){
             $query->where('commune',$request->input('commune'));
         }
+
+        if($request->has('garantie')){
+            $query->where('garantie', '>=',$request->input('garantie'));
+        }
+
         $BienLocations =  $query->clone()->where('type_bien','Location')
             ->take(3)
             ->orderBy('created_at','DESC')
             ->get();
+
         $ImagesBienLocations = $BienLocations->map(function ($Bien) {
             $ImageBiens = Images::where('bien_id', $Bien->id)->first();
             $Images = $ImageBiens ? json_decode($ImageBiens->images) : [];
