@@ -68,3 +68,4 @@ Route::get('/admin-dashboard/compteProprietaire',[\App\Http\Controllers\AdminCon
 Route::get('/admin-dashboard/commandes',[\App\Http\Controllers\AdminController::class,'commandes'])->middleware(['auth'])->name('admin-dashboard.commandes');
 Route::get('/admin-dashboard/biens',[\App\Http\Controllers\AdminController::class,'biens'])->middleware(['auth'])->name('admin-dashboard.biens');
 Route::delete('/admin-delete/{bien}',[\App\Http\Controllers\AdminController::class,'admin_bien_destroy'])->middleware(['auth'])->name('admin-delete');
+Route::delete('/admin-delete-bien/{bien}',[\App\Http\Controllers\AdminController::class,'admin_bien_delete'])->middleware(['auth'])->name('admin-delete-bien');

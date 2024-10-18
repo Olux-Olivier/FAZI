@@ -52,7 +52,7 @@
                 {{$Bien['surface']}}
             </td>
             <td>
-                <form action="{{ route('bien.destroy', $Bien['id']) }}" method="post">
+                <form action="{{ route('admin-delete-bien', $Bien['id']) }}" method="post">
                     @csrf
                     @method('delete')
                     <button type="submit" class="btn btn-danger">Retirer bien</button>
