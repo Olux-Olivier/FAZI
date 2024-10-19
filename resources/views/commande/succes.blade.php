@@ -1,5 +1,27 @@
-<div>
-    <p>Votre commande a ete passe avec succes</p>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Succès</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+    
 
-<a href="/">Retour sur la page d'acceuil</a>
+    <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+        <div class="alert alert-success text-center" role="alert" style="width: 40%;">
+            <p>Votre commande a été passée avec succès</p>
+            <a href="/" class="" style="color:black;">Retour accueil ? </a>
+        </div>
+       
+        
+    </div>
+
+    
+
+</body>
+</html>
+
+
+

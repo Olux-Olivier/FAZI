@@ -105,7 +105,7 @@
                 <!-- Bouton pour afficher les détails -->
                 <button id="toggleDetailsBtn">Voir le détail</button>
                 <!-- Informations supplémentaires masquées par défaut -->
-                <div id="details" class="details" style="display: none;">
+                <div id="details" class="div-details" style="display: none; margin-left: 1em">
                     Description : {{$bien->description}}
                     <br>
                     Chambre : {{$bien->chambre}}

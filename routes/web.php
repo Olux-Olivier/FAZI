@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CommentaireController;
 
+Route::get('/essai', function(){
+    return view('bien.bien');
+});
+
+
 Route::get('/', [BienController::class,'acceuil'])->name('index');
 
 Route::get('/login',[AuthController::class,'login'])->name('login');

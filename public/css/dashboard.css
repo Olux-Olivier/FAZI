@@ -1,0 +1,167 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.d-container{
+    height: 100vh;width: 100wv;
+}
+
+.d-container .dd-contt{
+    height: 100%;width: 100%;
+}
+
+.d-container .dd-content{
+    height: 100%;width: 100%;
+    display: flex;
+}
+
+.d-container .dd-content .d-side{
+    height: 100%;
+    width: 24em;
+    padding: 1.8em;
+    background-color: rgb(229, 229, 229);
+}
+
+.d-container .dd-content .d-side h3{
+    font-size: 30px;
+    margin-top:1em;
+}
+
+.d-container .dd-content .d-side h3 span{
+    color: rgb(8, 98, 172);
+}
+
+.d-container .dd-content .d-side .d-option{
+    margin-top: 2em;
+    display: flex;
+    flex-direction: column;
+}
+.d-container .dd-content .d-side .d-option a{
+    padding: 0.9em;
+    margin-top: 0.9em;
+    text-decoration: none;
+    color: rgb(67, 67, 67);
+    border-radius: 4px;
+    transition: all 0.3s ease-in-out;
+}
+
+.d-container .dd-content .d-side .d-option a:hover{
+    cursor: pointer;
+    background-color: rgb(0, 91, 171);
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+.d-container .dd-content .d-side .d-option .active{
+    cursor: pointer;
+    background-color: rgb(0, 91, 171);
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+.d-container .dd-content .d-contents{
+    height: 100%;
+    width: 100%;
+}
+
+.d-container .dd-content .d-contents{
+    padding: 2em;
+}
+
+.d-container .dd-content .d-contents .d-accueil{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 20em;background: rgb(5,0,94);
+    background: rgb(4,1,56);
+    background: linear-gradient(90deg, rgba(4,1,56,1) 0%, rgba(3,3,110,1) 35%, rgba(6,71,162,1) 61%, rgba(0,212,255,1) 100%);
+    border-radius: 5px;
+    padding: 2em;
+}
+
+.d-container .dd-content .d-contents .d-accueil h3{
+    font-size: 40px;color: white;
+    width: 5em;
+    
+}
+
+.d-container .dd-content .d-contents .d-accueil .d-container-card{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 5em;
+    width: 100%;
+    grid-gap: 1em;
+    height: 100%;
+}
+.d-container .dd-content .d-contents .d-accueil .d-container-card .list-card{
+    display: flex;
+    align-items: center;
+    background-color: red;
+}
+.d-container .dd-content .d-contents .d-accueil .d-container-card .d-card{
+    padding: 0.1em;
+    height:7em;
+    width: 12em;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+.d-container .dd-content .d-contents .d-accueil .d-container-card .d-card h3{
+    color: rgb(33, 33, 33);
+    width: 1em;
+    font-size: 45px;
+} 
+.d-container .dd-content .d-contents .d-accueil .d-container-card .d-card span{
+    color: rgb(33, 33, 33);
+    font-size: 15px;
+    width: 1em;
+} 
+
+.d-container .dd-content .d-contents .d-card-options{
+    margin-top: 1em;
+    height: 20em;
+    width: 100%;
+    padding: 1em;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 1em;
+}
+
+.d-container .dd-content .d-contents .d-card-options a{
+    text-decoration: none;
+    color: black;
+    display: block;
+    padding:0.5em ;
+    height: 8em;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    transition: all .3s ease-in-out;
+}
+
+.d-container .dd-content .d-contents .d-card-options a:hover{
+    background-color: hsl(204, 46%, 84%);
+}
+.d-container .dd-content .d-contents .d-card-options a:hover> .card-opt p{
+    color: black;
+}
+.d-container .dd-content .d-contents .d-card-options  .card-opt h3{
+    font-size: 18px;
+}
+
+.d-container .dd-content .d-contents .d-card-options .card-opt{
+    margin-top: 1em;
+    height: 100%;
+    width: 100%;
+    padding: 1em;
+    padding: 0.9em;
+}
+.d-container .dd-content .d-contents .d-card-options .card-opt p{
+    color: rgb(132, 132, 132);
+    margin-top: .5em;
+}
