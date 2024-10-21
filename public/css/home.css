@@ -97,6 +97,7 @@ html .container .div-bien .cards, body .container .div-bien .cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   place-items: center;
+  grid-gap: 2em;
 }
 html .container .div-bien .cards .card, body .container .div-bien .cards .card {
   height: 20em;
@@ -308,6 +309,21 @@ html .container .div-details button, body .container .div-details button {
   font-size: 16px;
   cursor: pointer;
 }
+
+html .container .action {
+  margin-left: 10em;
+}
+
+html .container .action .div-details span{
+  font-size: 20px;
+}
+
+html .container .action .div-details img{
+  height: 8em;
+  width: 8em;
+  object-fit: cover;
+}
+
 html .container .div-details .action .details, body .container .div-details .action .details {
   margin-left: 0.8em;
 }

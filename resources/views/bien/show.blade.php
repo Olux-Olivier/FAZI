@@ -79,10 +79,10 @@
             <div class="action">
                 @if (\Illuminate\Support\Facades\Auth::user()->categorie != 3)
                 <form action="/commande" method="post">
+
                     @csrf
                     <input type="hidden" name="bien_id" value="{{$bien->id}}">
                     <input type="hidden" name="type_bien" value="{{$bien->type_bien}}">
-
 
 
                     <button type="submit">
@@ -106,19 +106,19 @@
                 <button id="toggleDetailsBtn">Voir le détail</button>
                 <!-- Informations supplémentaires masquées par défaut -->
                 <div id="details" class="div-details" style="display: none; margin-left: 1em">
-                    Description : {{$bien->description}}
+                    <span>Description : {{$bien->description}}</span>
                     <br>
-                    Chambre : {{$bien->chambre}}
+                    <span>Chambre : {{$bien->chambre}}</span>
                     <br>
-                    Commune : {{$bien->commune}}
+                    <span>Commune : {{$bien->commune}}</span>
                     <br>
-                    Loyer : {{$bien->loyer}}
+                    <span>Loyer : {{$bien->loyer}}</span>
                     <br>
-                    Prix de vente : {{$bien->prix_vente}}
+                    <span>Prix de vente : {{$bien->prix_vente}}</span>
                     <br>
-                    Surface : {{$bien->surface}} m2
+                    <span>Surface : {{$bien->surface}} m2</span>
                     <br>
-                    Autres images
+                    <h4>Autres images</h4>
                     <br>
                     @foreach($ToutesImages as $image)
                         <img src="{{asset('storage/'.$image)}}" height="70" width="70" alt="">
