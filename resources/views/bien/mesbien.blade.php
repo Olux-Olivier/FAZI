@@ -74,8 +74,20 @@
                                     <td>{{ $Bien['quartier'] }}</td>
                                     <td>{{ $Bien['avenue'] }}</td>
                                     <td>{{ $Bien['type_bien'] }}</td>
-                                    <td>{{ $Bien['loyer'] }}</td>
-                                    <td>{{ $Bien['garantie'] }}</td>
+                                    <td>
+                                        @if($Bien['type_bien'] == 'vente')
+                                            --------
+                                        @else
+                                            {{ $Bien['loyer'] }}
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if($Bien['type_bien'] == 'vente')
+                                            ---------
+                                        @else
+                                            {{ $Bien['garantie'] }}
+                                        @endif
+                                    </td>
                                     <td>{{ $Bien['prix'] }}</td>
                                     <td>{{ $Bien['surface'] }}</td>
                                     <td>

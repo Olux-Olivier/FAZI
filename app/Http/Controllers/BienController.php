@@ -227,6 +227,7 @@ class BienController extends Controller
                 $Images = $ImageBiens ? json_decode($ImageBiens->images) : [];
                 $ImagePrincipale = $Images[0] ?? null;
 
+
                 return [
                     'id' => $Bien->id,
                     'chambre' =>$Bien->chambre,
