@@ -9,9 +9,8 @@
 </head>
 <body>
 
-<h3>Comptes proprietaires </h3>
-
 <a href="{{route('admin-dashboard')}}">Retour</a>
+<h3>Comptes proprietaires </h3>
 
 <table class="table table-bordered">
     <thead>

@@ -10,7 +10,7 @@
 <body>
 
 <h1 class="text-center my-4">Liste de commandes</h1>
-<a href="{{route('admin-dashboard')}}">Retour</a>
+
 <div class="container">
 
     <table class="table table-bordered table-hover table-striped">
@@ -55,7 +55,6 @@
     </table>
 
 </div>
-</body>
-</html>
+
 
 

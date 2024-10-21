@@ -8,7 +8,8 @@
 
 </head>
 <body>
-
+    
+<a href="{{route('admin-dashboard')}}">Retour</a>
 <h3 class="text-center my-4">Tous les biens</h3>
 
 <table class="table table-bordered table-hover table-striped">
