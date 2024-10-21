@@ -32,13 +32,13 @@
                             <div class='d-card'>
                                 <div class="d-card-body">
                                     <h3>4099</h3>
-                                    <span>Comptes client</span>
+                                    <span>Bien à vendre</span>
                                 </div>
                             </div>
                             <div class='d-card'>
                                 <div class="d-card-body">
                                     <h3>4099</h3>
-                                    <span>Comptes proprietaire</span>
+                                    <span>Bien à louer</span>
                                 </div>
                             </div>
                             <div class='d-card'>

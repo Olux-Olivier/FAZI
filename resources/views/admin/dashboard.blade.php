@@ -36,26 +36,32 @@
                         </div class='list-card'>
                             <div class='d-card'>
                                 <div class="d-card-body">
-                                    <h3>4099</h3>
+                                    <h3>{{ $clientsCount }}</h3>
                                     <span>Comptes client</span>
                                 </div>
                             </div>
                             <div class='d-card'>
                                 <div class="d-card-body">
-                                    <h3>4099</h3>
+                                    <h3>{{ $ownersCount }}</h3>
                                     <span>Comptes proprietaire</span>
                                 </div>
                             </div>
                             <div class='d-card'>
                                 <div class="d-card-body">
-                                    <h3>4099</h3>
+                                    <h3>{{ $venteCount }}</h3>
                                     <span>Biens à vendre</span>
                                 </div>
                             </div>
                             <div class='d-card'>
                                 <div class="d-card-body">
-                                    <h3>4099</h3>
+                                    <h3>{{ $locationCount }}</h3>
                                     <span>Biens à vendre</span>
+                                </div>
+                            </div>
+                            <div class='d-card'>
+                                <div class="d-card-body">
+                                    <h3>{{ $commandes }}</h3>
+                                    <span>Commandes biens</span>
                                 </div>
                             </div>
                         </div>

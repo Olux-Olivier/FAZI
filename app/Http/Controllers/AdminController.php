@@ -13,7 +13,20 @@ class AdminController extends Controller
 {
     public function index(){
         if (Auth::user()->categorie == 3) {
-            return view('admin.dashboard');
+            // Compter les clients (catégorie 1)
+            $clientsCount = User::where('categorie', 1)->count();
+            
+            // Compter les propriétaires (catégorie 2)
+            $ownersCount = User::where('categorie', 2)->count();
+
+            // Compter les biens dont le typecommande est 'vente'
+            $venteCount = Bien::where('type_bien', 'vente')->count();
+
+            $commandes = Commande::all()->count();
+
+            // Compter les biens dont le typecommande est 'location'
+            $locationCount = Bien::where('type_bien', 'location')->count();
+            return view('admin.dashboard', compact('clientsCount', 'ownersCount', 'venteCount', 'locationCount', 'commandes'));
         }
 
         return to_route('index');
