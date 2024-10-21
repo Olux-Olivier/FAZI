@@ -214,6 +214,13 @@ class BienController extends Controller
             $Biens = Bien::where('user_id',Auth::user()->id)
                 ->orderBy('created_at','DESC')
                 ->get();
+            
+            $nbBienVente = Bien::where('user_id', Auth::user()->id)
+                                ->where('type_bien', 'vente')->count();
+            $nbBienLocation = Bien::where('user_id', Auth::user()->id)
+                                ->where('type_bien','location')->count();
+
+            
 
             $ImagesBiens = $Biens->map(function ($Bien) {
                 $ImageBiens = Images::where('bien_id', $Bien->id)->first();
@@ -236,7 +243,7 @@ class BienController extends Controller
                 ];
             });
 
-            return view('bien.mesbien',compact('ImagesBiens'));
+            return view('bien.mesbien',compact('ImagesBiens', 'nbBienLocation', 'nbBienVente'));
         }
     }
 

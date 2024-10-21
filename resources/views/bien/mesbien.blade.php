@@ -31,26 +31,14 @@
                         </div class='list-card'>
                             <div class='d-card'>
                                 <div class="d-card-body">
-                                    <h3>4099</h3>
+                                    <h3>{{ $nbBienVente}}</h3>
                                     <span>Bien à vendre</span>
                                 </div>
                             </div>
                             <div class='d-card'>
                                 <div class="d-card-body">
-                                    <h3>4099</h3>
+                                    <h3>{{ $nbBienLocation}}</h3>
                                     <span>Bien à louer</span>
-                                </div>
-                            </div>
-                            <div class='d-card'>
-                                <div class="d-card-body">
-                                    <h3>4099</h3>
-                                    <span>Biens à vendre</span>
-                                </div>
-                            </div>
-                            <div class='d-card'>
-                                <div class="d-card-body">
-                                    <h3>4099</h3>
-                                    <span>Biens à vendre</span>
                                 </div>
                             </div>
                         </div>
