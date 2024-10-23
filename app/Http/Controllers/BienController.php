@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\BienRequest;
-use App\Models\Abonnement;
 use App\Models\Bien;
+use App\Models\User;
 use App\Models\Images;
+use App\Models\Abonnement;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
+use App\Http\Requests\BienRequest;
+use PHPMailer\PHPMailer\PHPMailer;
+
+use PHPMailer\PHPMailer\Exception;
 use Illuminate\Support\Facades\Auth;
 
 class BienController extends Controller
@@ -178,6 +182,8 @@ class BienController extends Controller
             'images' => json_encode($imagesPaths),
             'bien_id'=> $bien->id,
         ]);
+        $mailAdmin = User::where('categorie',3 )->get('email');
+        $this->sendmail($mailAdmin, Auth::user()->nom, Auth::user()->prenom, $bien['type_bien']);
 
         return redirect()->route('mes-biens');
     }
@@ -250,6 +256,49 @@ class BienController extends Controller
 
     public function edit(Bien $bien)
     {
+
+    }
+
+    public function sendmail($mailAdministrateur, $nomUtilisateur, $PrenomUtilisateur, $Type_bien){
+
+        $mail = new PHPMailer();
+
+        try {
+            //Server settings
+            $mail->SMTPDebug = 0;                      //Enable verbose debug output
+            $mail->isSMTP();                                            //Send using SMTP
+            $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+            $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+            $mail->Username   = 'fazilubumbashi@gmail.com';                     //SMTP username
+            $mail->Password   = 'eouafnuyjkmtdfyd';                               //SMTP password
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+            $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+            //Recipients
+            $mail->setFrom('fazilubumbashi@gmail.com', 'FAZI Lubumbashi');
+            $mail->addAddress($mailAdministrateur);     //Add a recipient
+            //$mail->addAddress('ellen@example.com');               //Name is optional
+            //$mail->addReplyTo('info@example.com', 'Information');
+            //$mail->addCC('cc@example.com');
+            //$mail->addBCC('bcc@example.com');
+
+            //Attachments
+            //$mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
+            //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
+
+            //Content
+            $mail->isHTML(true);                                  //Set email format to HTML
+            $mail->Subject = 'Commande';
+            $mail->Body    = '
+                <h1>Nouvelle commande reçue</h1>
+                <p>Bonjour cher Administrateur,</p>
+                <p>Un bien de '.$Type_bien .' a ete publie par :<strong><br></strong>'. $nomUtilisateur.' '. $PrenomUtilisateur .'</p>';
+
+            $mail->send();
+            echo 'Message has been sent';
+        } catch (Exception $e) {
+            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        }
 
     }
 

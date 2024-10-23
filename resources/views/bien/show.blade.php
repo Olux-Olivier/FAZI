@@ -74,6 +74,9 @@
                 <img src="{{asset('storage/'.$imagePrincipale)}}" height="200px" width="200px" alt="" >
             </div>
         </div>
+        @guest
+            <div style="padding-left:10%;font-size:20px">Pour voir les details du bien, <br> vous devez vous conneter ou creer un compte.</div>
+        @endguest
         @auth
 
             <div class="action">
