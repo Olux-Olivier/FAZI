@@ -95,7 +95,7 @@
                 </div>
             @endif
             <div class="col-md-9 text-center p-2">
-                <h1 class="text-center">SDK LARAVEL</h1>
+                <h1 class="text-center">Fazi Abonnement</h1>
             </div>
             <div class="col-md-4">
                 <form method="POST" action="">
@@ -103,23 +103,21 @@
                     <div class="col-md-12">
                         <div class="mt-3">
                             <label for="exampleInputMontant" class="form-label">Montant:</label>
-                            <input type="number" class="form-control" id="exampleInputMontant" name="amount" value="100" aria-describedby="emailHelp">
+                            <input type="number" class="form-control" id="exampleInputMontant" readonly name="amount" value="5000" aria-describedby="emailHelp">
                         </div>
                         <div class="mt-3">
-                            <label for="exampleInputMontant" class="form-label">Numero</label>
-                            <input type="tel" class="form-control" id="exampleInputMontant" name="numero" value="" aria-describedby="emailHelp">
+                            <label for="exampleInputMontant" class="form-label">Numéro</label>
+                            <input type="tel" class="form-control" id="exampleInputMontant" name="numero" value="" aria-describedby="emailHelp"
+                                pattern="^\d{10}$" required>
+                            <small class="text-muted">Entrez un numéro de téléphone valide à 10 chiffres.</small>
                         </div>
                         <div class="mt-3">
-
-                            <label for="exampleInputDevise" class="form-label">Devise:</label>
-                            <select class="form-select" name="currency" aria-label="Default select example">
-                                <option selected value="CDF">CDF</option>
-                                <option value="USD">USD</option>
-                            </select>
+                            <label for="exampleInputMontant" class="form-label">Montant:</label>
+                            <input type="text" class="form-control" id="exampleInputMontant" readonly name="amount" value="CDF" aria-describedby="emailHelp">
                         </div>
                     </div>
                     <div class="col-md-12 text-center mt-3">
-                        <button type="submit" class="btn btn-success">Effectuer le payer</button>
+                        <button type="submit" class="btn" style="background-color:rgb(8, 98, 172); color:white">Effectuer le payer</button>
                     </div>
                 </form>
             </div>

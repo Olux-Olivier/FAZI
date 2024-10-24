@@ -57,6 +57,9 @@ Route::get('/contract',[\App\Http\Controllers\AbonnementController::class, 'cont
 
 Route::get('/abonnement', [\App\Http\Controllers\AbonnementController::class, 'index'])->middleware(['auth'])->name('abonnement');
 Route::post('/abonnement', [\App\Http\Controllers\AbonnementController::class, 'Payment'])->middleware(['auth']);
+Route::post('/abonnement-verify',[\App\Http\Controllers\AbonnementController::class, 'verify'])->middleware(['auth']);
+Route::get('/save-abonnement/{numero}',[\App\Http\Controllers\AbonnementController::class, 'save_abonnement'])->middleware(['auth'])->name('save-abonnement');
+
 Route::match(['get','post'],'/notify_url', [\App\Http\Controllers\AbonnementController::class, 'notify_url'])->name('notify_url');
 Route::match(['get','post'],'/return_url', [\App\Http\Controllers\AbonnementController::class, 'return_url'])->name('return_url');
 
