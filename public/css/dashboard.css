@@ -19,7 +19,8 @@
 
 .d-container .dd-content .d-side{
     height: 100%;
-    width: 24em;
+    position: fixed;
+    width: 23em;
     padding: 1.8em;
     background-color: rgb(229, 229, 229);
 }
@@ -62,7 +63,8 @@
 
 .d-container .dd-content .d-contents{
     height: 100%;
-    width: 100%;
+    width: 80%;
+    margin-left: 23em;
 }
 
 .d-container .dd-content .d-contents{

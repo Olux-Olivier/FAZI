@@ -24,7 +24,7 @@
             vous aider à trouvez
             la <span>maison de vos rêves</span>
         </h3>
-        <button>Commencer</button>
+        <a href="{{ route('index') }}">Commencer</a>
     </div>
 </div>
 
@@ -48,7 +48,8 @@
                 <form action="{{route('commentaire.destroy', $commentaire['id_commentaire'])}}" method="post">
                     @csrf
                     @method('delete')
-                    <button type="submit">Supprimer</button>
+                    <button type="submit" style='padding: 0.8em;border:none;
+                    width:13em;display:bloc;margin-bottom:1em;cursor:pointer;background-color:red;color:white;'>Supprimer</button>
                 </form>
 
                 <a href="{{route('commentaire.edit', $commentaire['id_commentaire'])}}">Modifier le commentaire</a>

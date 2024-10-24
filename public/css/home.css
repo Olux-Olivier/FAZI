@@ -71,7 +71,10 @@ html .header .hero-bannere h3, body .header .hero-bannere h3 {
 html .header .hero-bannere h3 span, body .header .hero-bannere h3 span {
   color: #5DBEFF;
 }
-html .header .hero-bannere button, body .header .hero-bannere button {
+html .header .hero-bannere button, body .header .hero-bannere a {
+  display: block;
+  text-align: center;
+  text-decoration: none;
   padding: 1em;
   background-color: #51B8FE;
   border-radius: 8px;
