@@ -27,7 +27,6 @@
                             <option value="rwashi" {{ old('commune', $input) == 'rwashi' ? 'selected' : '' }}>Rwashi</option>
                             <option value="kampemba" {{ old('commune', $input) == 'kampemba' ? 'selected' : '' }}>Kampemba</option>
                         </select>
-                        <input type="number" name="prix" placeholder="prix">
                         <input type="submit" value="Rechercher">
                     </form>
                     @if(\Illuminate\Support\Facades\Auth::user()->categorie == 2)
@@ -51,7 +50,7 @@
                     >
                         Logout
                     </a>
-
+                    <a href="{{route('abonnement')}}">S'abonner</a>
                 @else
                     <a
                         href="{{ route('login') }}"
@@ -67,9 +66,10 @@
                             Register
                         </a>
                     @endif
-
+                    
                 @endauth
-                <a href="{{route('abonnement')}}">S'abonner</a>
+               
+                
                 <a href="{{route('commentaire.index')}}">Consulter les commentaires</a>
             </nav>
         @endif
