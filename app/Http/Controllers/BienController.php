@@ -182,9 +182,9 @@ class BienController extends Controller
             'images' => json_encode($imagesPaths),
             'bien_id'=> $bien->id,
         ]);
-        $mailAdmin = User::where('categorie',3 )->get('email');
-        $this->sendmail($mailAdmin, Auth::user()->nom, Auth::user()->prenom, $bien['type_bien']);
-
+        $mailAdmin = User::where('categorie',3 )->first();
+        $this->sendmail($mailAdmin->email, Auth::user()->nom, Auth::user()->prenom, $bien['type_bien']);
+        
         return redirect()->route('mes-biens');
     }
     public function show(string $id)
@@ -289,11 +289,11 @@ class BienController extends Controller
 
             //Content
             $mail->isHTML(true);                                  //Set email format to HTML
-            $mail->Subject = 'Commande';
+            $mail->Subject = 'Publication bien';
             $mail->Body    = '
-                <h1>Nouvelle commande reçue</h1>
+                <h1>Nouvelle publication bien</h1>
                 <p>Bonjour cher Administrateur,</p>
-                <p>Un bien de '.$Type_bien .' a ete publie par :<strong><br></strong>'. $nomUtilisateur.' '. $PrenomUtilisateur .'</p>';
+                <p>Un bien de type '.$Type_bien .' a ete publie par :<strong><br></strong>'. $nomUtilisateur.' '. $PrenomUtilisateur .'</p>';
 
             $mail->send();
             echo 'Message has been sent';
