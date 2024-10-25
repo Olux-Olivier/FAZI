@@ -63,7 +63,7 @@
             vous aider à trouvez
             la <span>maison de vos rêves</span>
         </h3>
-        <button>Commencer</button>
+        <a href="{{ route('index') }}">Commencer</a>
     </div>
 </div>
 
