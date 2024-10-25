@@ -7,6 +7,25 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/home.css">
     <title>FAZI | Accueil</title>
+    <style>
+        .btn-custom {
+            margin-top:20px;
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff; /* Couleur de fond */
+            color: white; /* Couleur du texte */
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none; /* Supprime la sous-ligne */
+            border-radius: 5px; /* Coins arrondis */
+            transition: background-color 0.3s, transform 0.3s; /* Transition pour effet */
+        }
+
+        .btn-custom:hover {
+            background-color: #0056b3; /* Changement de couleur au survol */
+            transform: scale(1.05); /* Légère agrandissement au survol */
+        }
+    </style>
 </head>
 <body>
 <div class="header">
@@ -15,64 +34,77 @@
         <h3>FA<span>ZI</span></h3>
         @if (Route::has('login'))
             <nav class="-mx-3 flex flex-1 justify-end">
+                
                 @auth
-                    <form action="" method="get">
-                        <select name="commune">
-                            <option value="">Choisir une commune</option>
-                            <option value="annexe" {{ old('commune', $input) == 'annexe' ? 'selected' : '' }}>Annexe</option>
-                            <option value="lubumbashi" {{ old('commune', $input) == 'lubumbashi' ? 'selected' : '' }}>Lubumbashi</option>
-                            <option value="katuba" {{ old('commune', $input) == 'katuba' ? 'selected' : '' }}>Katuba</option>
-                            <option value="kenya" {{ old('commune', $input) == 'kenya' ? 'selected' : '' }}>Kenya</option>
-                            <option value="kamalondo" {{ old('commune', $input) == 'kamalondo' ? 'selected' : '' }}>Kamalondo</option>
-                            <option value="rwashi" {{ old('commune', $input) == 'rwashi' ? 'selected' : '' }}>Rwashi</option>
-                            <option value="kampemba" {{ old('commune', $input) == 'kampemba' ? 'selected' : '' }}>Kampemba</option>
-                        </select>
-                        <input type="submit" value="Rechercher">
-                    </form>
-                    @if(\Illuminate\Support\Facades\Auth::user()->categorie == 2)
-                    <a
-                        href="{{ route('mes-biens') }}"
-                        class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
-                    >
-                        Dashboard
-                    </a>
-                    @else
+                
+                    <div>
+                        <a href="/" style="color: white;background-color: #007bff;font-weight: bold;border: 2px solid #0056b3;padding:5px">Acceuil</a>
+                        @if(\Illuminate\Support\Facades\Auth::user()->categorie == 2)
                         <a
-                            href="{{ route('index') }}"
+                            href="{{ route('mes-biens') }}"
                             class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
                         >
                             Dashboard
                         </a>
-                    @endif
-                    <a
-                        href="{{ route('logout') }}"
-                        class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
-                    >
-                        Logout
-                    </a>
-                    <a href="{{route('abonnement')}}">S'abonner</a>
-                @else
-                    <a
-                        href="{{ route('login') }}"
-                        class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
-                    >
-                        Log in
-                    </a>
-                    @if (Route::has('register'))
+                        @else
+                            <a
+                                href="{{ route('index') }}"
+                                class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                            >
+                                Dashboard
+                            </a>
+                        @endif
                         <a
-                            href="{{ route('signup') }}"
+                            href="{{ route('logout') }}"
                             class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
                         >
-                            Register
+                            Deconnexion
                         </a>
-                    @endif
+
+                        @if(Auth::user()->categorie == 2)
+                        <a href="{{route('abonnement')}}">S'abonner</a>
+                        @endif
+                    
+                @else
+                    <div>
+                        <a
+                            href="{{ route('login') }}"
+                            class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                        >
+                            Log in
+                        </a>
+                        @if (Route::has('register'))
+                            <a
+                                href="{{ route('signup') }}"
+                                class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                            >
+                                Register
+                            </a>
+                        @endif
                     
                 @endauth
-               
-                
                 <a href="{{route('commentaire.index')}}">Consulter les commentaires</a>
+                
+                </div>
+                
             </nav>
+            
         @endif
+        <div>
+                <form action="" method="get" class="form-inline">
+                    <select name="commune" class="select-inline">
+                        <option value="">Choisir une commune</option>
+                        <option value="annexe" {{ old('commune', $input) == 'annexe' ? 'selected' : '' }}>Annexe</option>
+                        <option value="lubumbashi" {{ old('commune', $input) == 'lubumbashi' ? 'selected' : '' }}>Lubumbashi</option>
+                        <option value="katuba" {{ old('commune', $input) == 'katuba' ? 'selected' : '' }}>Katuba</option>
+                        <option value="kenya" {{ old('commune', $input) == 'kenya' ? 'selected' : '' }}>Kenya</option>
+                        <option value="kamalondo" {{ old('commune', $input) == 'kamalondo' ? 'selected' : '' }}>Kamalondo</option>
+                        <option value="rwashi" {{ old('commune', $input) == 'rwashi' ? 'selected' : '' }}>Rwashi</option>
+                        <option value="kampemba" {{ old('commune', $input) == 'kampemba' ? 'selected' : '' }}>Kampemba</option>
+                    </select>
+                    <input type="submit" value="Rechercher" class="button-inline">
+                </form>
+            </div>
     </div>
     <div class="hero-bannere">
         <h3><span>Laissez nous</span>
@@ -120,7 +152,7 @@
             <input type="hidden" name="type_bien" value="location">
             <input type="submit" value="Voir plus">
         </form>
-        <a href="{{ url('/commentaire/create') }}">Laisser un commentaire</a>
+        <a href="{{ url('/commentaire/create') }}" class="btn-custom">Laisser un commentaire</a>
     </div>
 </div>
 <div class="footer">

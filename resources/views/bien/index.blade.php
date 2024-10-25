@@ -20,6 +20,10 @@
             max-width: 200px;
             display: none;
         }
+        
+        #location_fields, #vente_fields {
+            display: flex;
+        }
     </style>
 </head>
 <body>
@@ -51,7 +55,7 @@
         </div>
         <div class="div-app"></div>
 
-        <textarea name="description" cols="30"  rows="10">{{$bien->description ?? ''}}</textarea>
+        <textarea name="description" cols="30"  rows="10" placeholder="Description">{{$bien->description ?? ''}}</textarea>
 
         <div id="location_fields">
             <input type="text" name="loyer" value="{{ $bien->loyer ?? '' }}" placeholder="Loyer">
@@ -141,19 +145,26 @@
     }
 
     function toggleFields() {
-        var typeBien = document.getElementById('type_bien').value;
-        var locationFields = document.getElementById('location_fields');
-        var venteFields = document.getElementById('vente_fields');
+    var typeBien = document.getElementById('type_bien').value;
+    var locationFields = document.getElementById('location_fields');
+    var venteFields = document.getElementById('vente_fields');
 
-        if (typeBien === 'location') {
-            locationFields.style.display = 'block';
-            venteFields.style.display = 'none';
-        } else if (typeBien === 'vente') {
-            venteFields.style.display = 'block';
-            locationFields.style.display = 'none';
-
-        }
+    if (typeBien === 'location') {
+        locationFields.style.display = 'grid';
+        locationFields.style.gap = '0.8em';
+        locationFields.style.gridTemplateColumns = 'repeat(2, 1fr)';
+        locationFields.style.marginBottom = '0.8em';
+        locationFields.style.marginTop = '0.8em';
+        venteFields.style.display = 'none';
+    } else if (typeBien === 'vente') {
+        venteFields.style.display = 'block';
+        locationFields.style.display = 'none';
+    } else {
+        // Si aucun type n'est sélectionné, on cache les deux
+        locationFields.style.display = 'none';
+        venteFields.style.display = 'none';
     }
+}
 
     // Appeler la fonction lors du chargement de la page pour définir l'état initial
     window.onload = toggleFields;

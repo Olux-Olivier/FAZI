@@ -16,27 +16,21 @@
         @if (Route::has('login'))
             <nav class="-mx-3 flex flex-1 justify-end">
                 @auth
-                    <form action="" method="get">
-                        <select name="commune">
-                            <option value="">Choisir une commune</option>
-                            <option >Annexe</option>
-                            <option >Lubumbashi</option>
-                            <option >Katuba</option>
-                            <option >Kenya</option>
-                            <option >Kamalondo</option>
-                            <option >Rwashi</option>
-                            <option >Kampemba</option>
-                        </select>
-                        <input type="number" name="prix" placeholder="prix">
-                        <input type="submit" value="Rechercher">
-                    </form>
                     <a
                         href="{{ url('/mes-biens') }}"
                         class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
                     >
                         Dashboard
                     </a>
-
+                    <a
+                        href="{{ route('logout') }}"
+                        class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                    >
+                        Deconnexion
+                    </a>
+                    @if(Auth::user()->categorie == 2)
+                    <a href="{{route('abonnement')}}">S'abonner</a>
+                    @endif
                 @else
                     <a
                         href="{{ route('login') }}"
@@ -53,9 +47,10 @@
                         </a>
                     @endif
                 @endauth
-                <a href="{{route('abonnement')}}">S'abonner</a><a href="{{url('bien')}}">Bien</a>
+                <a style="color: white;background-color: #007bff;font-weight: bold;border: 2px solid #0056b3;padding:5px">Details</a>
                 <a href="{{route('commentaire.index')}}">Consulter les commentaires</a>
             </nav>
+            <div></div>
         @endif
     </div>
     <div class="hero-bannere">

@@ -189,6 +189,7 @@ class BienController extends Controller
     }
     public function show(string $id)
     {
+        
         $bien = Bien::find($id);
         $imagebiens = Images::find($id);
         $ToutesImages = json_decode($imagebiens->images);

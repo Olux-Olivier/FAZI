@@ -43,13 +43,13 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/admin',function () {
     User::create([
-        'nom' => 'John' ,
-        'prenom' => 'Doe',
+        'nom' => 'Olivier' ,
+        'prenom' => 'Kasongo',
         'categorie' => 3,
         'adresse' => 'adresse de l\'administrateur',
         'telephone' => '0854721056',
-        'email' => '20kw174@esisalama.org',
-        'password' => Hash::make('12345678'),
+        'email' => '20kl187@esisalama.org',
+        'password' => Hash::make('1234'),
     ]);
 });
 

@@ -20,6 +20,7 @@
 
                     <a href="{{ route('bien.index') }}" >Poster un bien</a>
                     <a href="{{ route('index') }}" >Retour à l'accueil</a>
+                    <a href="{{ route('logout') }}">Deconnexion</a>
                 </div>
             </div>
             <div class="d-contents"> 
