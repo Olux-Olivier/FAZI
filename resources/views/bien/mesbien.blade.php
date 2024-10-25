@@ -46,6 +46,11 @@
                         
                     </div>
                     <div class="d-card-option">
+                    @if(session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
                         <table class="table table-bordered table-striped">
                             <thead class="thead-dark">
                             <tr>

@@ -36,7 +36,6 @@
             <nav class="-mx-3 flex flex-1 justify-end">
                 
                 @auth
-                
                     <div>
                         <a href="/" style="color: white;background-color: #007bff;font-weight: bold;border: 2px solid #0056b3;padding:5px">Acceuil</a>
                         @if(\Illuminate\Support\Facades\Auth::user()->categorie == 2)

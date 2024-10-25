@@ -256,9 +256,90 @@ class BienController extends Controller
     }
 
     public function edit(Bien $bien)
+    
     {
+        $bien = Bien::findOrFail($bien->id); // Récupère le bien à modifier
+        $imagebiens = Images::where('bien_id', $bien->id)->first(); // Récupère les images associées
+        $ToutesImages = json_decode($imagebiens->images);
+        $imagePrincipale = $ToutesImages[0];
+        array_shift($ToutesImages);
 
+        // Biens similaires (facultatif, selon les besoins)
+        $Others = Bien::where('type_bien', $bien->type_bien)
+            ->where('id', '!=', $bien->id)
+            ->take(5)
+            ->get();
+
+        $OthersWithImages = $Others->map(function ($otherBien) {
+            $otherImageBiens = Images::where('bien_id', $otherBien->id)->first();
+            $otherImages = $otherImageBiens ? json_decode($otherImageBiens->images) : [];
+            $otherImagePrincipale = $otherImages[0] ?? null;
+
+            return [
+                'id' => $otherBien->id,
+                'imagePrincipale' => $otherImagePrincipale,
+            ];
+        });
+
+        return view('bien.bienEdit', compact('bien', 'imagePrincipale', 'ToutesImages', 'OthersWithImages'));
+
+        }
+        public function update(BienRequest $request, $id)
+{
+    $bien = Bien::findOrFail($id);
+
+    // Met à jour les attributs du bien
+    $bien->update($request->all());
+
+    // Gestion de l'image principale
+    if ($request->hasFile('image_principale')) {
+        $imagePrincipalePath = $request->file('image_principale')->store('bien', 'public');
+
+        // Récupère l'enregistrement des images associé au bien
+        $images = $bien->images; // Assume que 'images' est la relation définie dans le modèle Bien
+
+        if ($images) {
+            // Supprime l'ancienne image principale et remplace par la nouvelle
+            $existingImages = json_decode($images->images);
+            $existingImages[0] = $imagePrincipalePath; // Met à jour la première image
+            $images->update(['images' => json_encode($existingImages)]);
+        } else {
+            // Si aucune image n'existe, crée un nouvel enregistrement
+            Images::create([
+                'images' => json_encode([$imagePrincipalePath]),
+                'bien_id' => $bien->id,
+            ]);
+        }
     }
+
+    // Gestion des autres images
+    if ($request->hasFile('images')) {
+        // Récupère l'enregistrement des images associé au bien
+        $images = $bien->images;
+
+        $newImagesPaths = [];
+        foreach ($request->file('images') as $image) {
+            $newImagesPaths[] = $image->store('bien', 'public');
+        }
+
+        if ($images) {
+            // Ajoute les nouvelles images au tableau existant
+            $existingImages = json_decode($images->images);
+            $existingImages = array_merge($existingImages, $newImagesPaths); // Concatène les nouveaux chemins
+            $images->update(['images' => json_encode($existingImages)]);
+        } else {
+            // Si aucune image n'existe, crée un nouvel enregistrement
+            Images::create([
+                'images' => json_encode($newImagesPaths),
+                'bien_id' => $bien->id,
+            ]);
+        }
+    }
+
+    return redirect()->route('mes-biens')->with('success', 'Bien modifié avec succès');
+}
+
+
 
     public function sendmail($mailAdministrateur, $nomUtilisateur, $PrenomUtilisateur, $Type_bien){
 
