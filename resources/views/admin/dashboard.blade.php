@@ -68,20 +68,21 @@
                         
                     </div>
                     <div class="d-card-options">
-                        <a href="#">
+                        <a href="{{route('adim-dashboard.compteClient')}}">
                             <div class="card-opt">
                                 <h3>Voir les comptes client</h3>
                                 <p>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                Consultez la liste complète des comptes de clients et suivez leur activité.
+            
                                 </p>
                             </div>
                         </a>
-                        <a href="#">
+                        <a href="{{route('admin-dashboard.compteProprietaire')}}">
                             <div class="card-opt">
                                 <h3>Voir les comptes proprietaires</h3>
                                 <p>
-
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. e.
+                                Accédez aux informations détaillées des comptes des propriétaires inscrits.
+        
                                 </p>
                             </div>
                         </a>
@@ -90,17 +91,14 @@
                             <div class="card-opt">
                                 <h3>Voir toutes les commandes</h3>
                                 <p>
-
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                                Obtenez une vue d'ensemble de toutes les commandes en cours et terminées.
                                 </p>
                             </div>
                         </a>
                         <a href="#">
                             <div class="card-opt">
                                 <h3>Voir les biens à vendre</h3>
-                                <p>
-
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                                <p>Parcourez la liste des biens disponibles pour l'achat, avec leurs détails.
                                 </p>
                             </div>
                         </a>
@@ -109,7 +107,7 @@
                                 <h3>Voir les biens à louer</h3>
                                 <p>
 
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                                Consultez les biens en location, avec toutes les informations nécessaires.
                                 </p>
                             </div>
                         </a>
@@ -122,15 +120,7 @@
                                 </p>
                             </div>
                         </a>
-                        <a href="#">
-                            <div class="card-opt">
-                                <h3>Retourner à l'accuel</h3>
-                                <p>
-
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                                </p>
-                            </div>
-                        </a>
+                        
                     </div>
                     </div>
 
